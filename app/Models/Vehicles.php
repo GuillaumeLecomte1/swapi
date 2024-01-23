@@ -14,10 +14,10 @@ class Vehicles extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'vehicle_films');
+        return $this->belongsToMany(Film::class, 'film_vehicles');
     }
 
     public function pilots()
     {
-        return $this->belongsToMany(People::class, 'vehicle_people');
+        return $this->belongsToMany(People::class, 'people_vehicles');
     }}

@@ -28,28 +28,6 @@ return new class extends Migration
             $table->foreign('homeworld')->references('id')->on('planets')->onDelete('cascade');
        
         });
-
-        // Table de liaison avec films
-        Schema::create('species_films', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('species_id');
-            $table->unsignedBigInteger('film_id');
-            $table->timestamps();
-
-            $table->foreign('species_id')->references('id')->on('species')->onDelete('cascade');
-            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
-        });
-
-        // Table de liaison avec people
-        Schema::create('species_people', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('species_id');
-            $table->unsignedBigInteger('people_id');
-            $table->timestamps();
-
-            $table->foreign('species_id')->references('id')->on('species')->onDelete('cascade');
-            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
-        });
     }
 
     /**
@@ -57,8 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('species_films');
-        Schema::dropIfExists('species_people');
         Schema::dropIfExists('species');
     }
 };

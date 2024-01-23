@@ -35,11 +35,6 @@ class People extends Model
         return $this->belongsToMany(Species::class, 'people_species', 'people_id', 'species_id');
     }
 
-    public function planets()
-    {
-        return $this->belongsToMany(Planets::class, 'people_planets', 'people_id', 'planets_id');
-    }
-
     public function getUrlAttribute()
     {
         return url("/people/{$this->id}");

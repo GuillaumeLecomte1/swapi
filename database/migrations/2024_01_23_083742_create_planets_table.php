@@ -24,28 +24,6 @@ return new class extends Migration
             $table->string("surface_water");
             $table->timestamps();
         });
-
-        // Table de liaison avec films
-        Schema::create('planet_films', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('planet_id');
-            $table->unsignedBigInteger('film_id');
-            $table->timestamps();
-
-            $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
-            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
-        });
-
-        // Table de liaison avec people
-        Schema::create('planet_people', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('planet_id');
-            $table->unsignedBigInteger('people_id');
-            $table->timestamps();
-
-            $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
-            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
-        });
     }
 
     /**
@@ -53,8 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('planet_films');
-        Schema::dropIfExists('planet_people');
         Schema::dropIfExists('planets');
     }
 };
