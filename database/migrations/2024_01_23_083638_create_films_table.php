@@ -22,17 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-         // Table de liaison avec people
-         Schema::create('film_people', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('film_id');
-            $table->unsignedBigInteger('people_id');
-            $table->timestamps();
-
-            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
-            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
-        });
-
         // Table de liaison avec planets
         Schema::create('film_planets', function (Blueprint $table) {
             $table->id();
@@ -83,7 +72,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('film_people');
         Schema::dropIfExists('film_planets');
         Schema::dropIfExists('film_starships');
         Schema::dropIfExists('film_vehicles');

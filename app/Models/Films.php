@@ -18,7 +18,7 @@ class Films extends Model
 
     public function characters()
     {
-        return $this->belongsToMany(People::class, 'film_people', 'film_id', 'people_id');
+        return $this->belongsToMany(People::class, 'people_films', 'film_id', 'people_id');
     }
 
     public function planets()
