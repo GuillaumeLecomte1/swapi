@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("vehicle_class");
             $table->string("manufacturer");
             $table->string("cost_in_credits");
-            $table->integer("length");
             $table->string("crew");
             $table->string("passengers");
             $table->string("max_atmosphering_speed");
