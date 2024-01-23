@@ -27,7 +27,7 @@ class People extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_people', 'people_id', 'film_id');
+        return $this->belongsToMany(Film::class, 'people_films', 'people_id', 'film_id');
     }
 
     public function species()
@@ -35,14 +35,9 @@ class People extends Model
         return $this->belongsToMany(Species::class, 'people_species', 'people_id', 'species_id');
     }
 
-    public function starships()
+    public function planets()
     {
-        return $this->belongsToMany(Starship::class, 'people_starship', 'people_id', 'starship_id');
-    }
-
-    public function vehicles()
-    {
-        return $this->belongsToMany(Vehicle::class, 'people_vehicle', 'people_id', 'vehicle_id');
+        return $this->belongsToMany(Planets::class, 'people_planets', 'people_id', 'planets_id');
     }
 
     public function getUrlAttribute()

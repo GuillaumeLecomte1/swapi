@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Planets extends Model
 {
-    use HasFactory;
-}
+    protected $fillable = [
+        'name', 'diameter', 'rotation_period', 'orbital_period', 'gravity', 'population', 'climate', 'terrain', 'surface_water',
+    ];
+
+    public function films()
+    {
+        return $this->belongsToMany(Film::class, 'planet_films');
+    }
+
+    public function people()
+    {
+        return $this->belongsToMany(People::class, 'planet_people');
+    }}

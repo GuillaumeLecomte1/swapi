@@ -26,6 +26,28 @@ return new class extends Migration
             $table->string("consumables");
             $table->timestamps();
         });
+
+        // Table de liaison avec films
+        Schema::create('vehicle_films', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('vehicle_id');
+            $table->unsignedBigInteger('film_id');
+            $table->timestamps();
+
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
+            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
+        });
+
+        // Table de liaison avec people
+        Schema::create('vehicle_people', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('vehicle_id');
+            $table->unsignedBigInteger('people_id');
+            $table->timestamps();
+
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
+            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
+        });
     }
 
     /**
@@ -33,6 +55,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('vehicle_films');
+        Schema::dropIfExists('vehicle_people');
         Schema::dropIfExists('vehicles');
     }
 };

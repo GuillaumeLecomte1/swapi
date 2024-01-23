@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Starships extends Model
 {
-    use HasFactory;
-}
+    protected $fillable = [
+        'name', 'model', 'starship_class', 'manufacturer', 'cost_in_credits', 'length', 'crew', 'passengers',
+        'max_atmosphering_speed', 'hyperdrive_rating', 'MGLT', 'cargo_capacity', 'consumables',
+    ];
+
+    public function films()
+    {
+        return $this->belongsToMany(Film::class, 'starship_films');
+    }
+
+    public function pilots()
+    {
+        return $this->belongsToMany(People::class, 'starship_people');
+    }}

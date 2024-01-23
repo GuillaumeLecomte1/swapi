@@ -28,6 +28,28 @@ return new class extends Migration
             $table->string("consumables");
             $table->timestamps();
         });
+
+        // Table de liaison avec films
+        Schema::create('starship_films', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('starship_id');
+            $table->unsignedBigInteger('film_id');
+            $table->timestamps();
+
+            $table->foreign('starship_id')->references('id')->on('starships')->onDelete('cascade');
+            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
+        });
+
+        // Table de liaison avec people
+        Schema::create('starship_people', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('starship_id');
+            $table->unsignedBigInteger('people_id');
+            $table->timestamps();
+
+            $table->foreign('starship_id')->references('id')->on('starships')->onDelete('cascade');
+            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
+        });
     }
 
     /**
@@ -35,6 +57,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('starship_films');
+        Schema::dropIfExists('starship_people');
         Schema::dropIfExists('starships');
     }
 };
