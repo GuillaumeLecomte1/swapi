@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("birth_year");
             $table->string("eye_color");
-            $table->json('films');
             $table->string("gender");
             $table->string("hair_color");
             $table->integer("height");
