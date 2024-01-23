@@ -36,4 +36,3 @@ Route::get('/', function () {
  * )
  */
 Route::get('/api/films', 'SwapiController@getFilms');
-
