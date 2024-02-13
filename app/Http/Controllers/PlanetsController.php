@@ -24,7 +24,16 @@ class PlanetsController extends Controller
     
 /**
  * @OA\Get(
- *     path="/api/planets/:id",
+ *     path="/api/planets/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -53,7 +62,16 @@ class PlanetsController extends Controller
 
 /**
  * @OA\Put(
- *     path="/api/planets/:id",
+ *     path="/api/planets/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -68,7 +86,16 @@ class PlanetsController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/api/planets/:id",
+ *     path="/api/planets/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),

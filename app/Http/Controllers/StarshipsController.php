@@ -24,7 +24,16 @@ class StarshipsController extends Controller
     
 /**
  * @OA\Get(
- *     path="/api/starships/:id",
+ *     path="/api/starships/{id}",
+ *   @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -39,7 +48,7 @@ class StarshipsController extends Controller
 
 /**
  * @OA\Post(
- *     path="/api/starships/:id",
+ *     path="/api/starships",
  *     summary="Get a list of users",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -53,7 +62,16 @@ class StarshipsController extends Controller
 
 /**
  * @OA\Put(
- *     path="/api/starships/:id",
+ *     path="/api/starships/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -68,7 +86,16 @@ class StarshipsController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/api/starships/:id",
+ *     path="/api/starships/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),

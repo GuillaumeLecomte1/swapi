@@ -24,7 +24,16 @@ class FilmsController extends Controller
     
 /**
  * @OA\Get(
- *     path="/api/films/:id",
+ *     path="/api/films/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -53,7 +62,16 @@ class FilmsController extends Controller
 
 /**
  * @OA\Put(
- *     path="/api/films/:id",
+ *     path="/api/films/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -68,7 +86,16 @@ class FilmsController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/api/films/:id",
+ *     path="/api/films/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),

@@ -24,7 +24,7 @@ class VehiclesController extends Controller
     
 /**
  * @OA\Get(
- *     path="/api/vehicles/:id",
+ *     path="/api/vehicles/{id}",
  *     summary="Get a list of users",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -53,7 +53,7 @@ class VehiclesController extends Controller
 
 /**
  * @OA\Put(
- *     path="/api/vehicles/:id",
+ *     path="/api/vehicles/{id}",
  *     summary="Get a list of users",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -68,7 +68,7 @@ class VehiclesController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/api/vehicles/:id",
+ *     path="/api/vehicles/{id}",
  *     summary="Get a list of users",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),

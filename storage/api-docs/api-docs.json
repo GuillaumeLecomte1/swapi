@@ -37,13 +37,24 @@
                 }
             }
         },
-        "/api/films/:id": {
+        "/api/films/{id}": {
             "get": {
                 "tags": [
                     "Films"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "eb4ff73e13c6089a8fe715b59878786e",
+                "operationId": "a4df4f825f139541ff446b2eaabf793d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -58,7 +69,18 @@
                     "Films"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "a78e329b92dee0a7968742a71f8a6e7c",
+                "operationId": "e10f6be5a3c1dd6d923fadad783d5ac1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -73,7 +95,18 @@
                     "Films"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "e2c84ab36bfb6b7e7ff588fd5d020b4f",
+                "operationId": "771c10e4bc6b04dc625ec4fef05b4ab0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -116,13 +149,24 @@
                 }
             }
         },
-        "/api/people/:id": {
+        "/api/people/{id}": {
             "get": {
                 "tags": [
                     "People"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "74fe4f3ad8e2bfd02119e9be715f4389",
+                "operationId": "91a4a00c86a8fb033932abdc59c601c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -137,7 +181,18 @@
                     "People"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "db9d5a720612691336d8c5786138aa9f",
+                "operationId": "b70c32b8efd74cd5427c2722fa878796",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -152,7 +207,18 @@
                     "People"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "4165744bfe4434ae043deb5d2cf729c2",
+                "operationId": "2ccbbf08d5e8c0a60a6abdb71e73a7a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -195,13 +261,24 @@
                 }
             }
         },
-        "/api/planets/:id": {
+        "/api/planets/{id}": {
             "get": {
                 "tags": [
                     "Planets"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "778d091d1bc336b51bfb789a052a3baf",
+                "operationId": "4954c4dfd1547e0b42d7d4dd2618093e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -216,7 +293,18 @@
                     "Planets"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "a098681ef4a577921e0b3a4d0472c236",
+                "operationId": "9d014d8e5773db1c11fb1ca00af01b65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -231,7 +319,18 @@
                     "Planets"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "08b17d0dbac49d0c81bf6e00af3109e5",
+                "operationId": "5b1ac95d2e5db95291fd132ee5eb9d88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -274,13 +373,24 @@
                 }
             }
         },
-        "/api/species/:id": {
+        "/api/species/{id}": {
             "get": {
                 "tags": [
                     "Species"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "be2c9eac066a4ff468ecfaae1f3d936f",
+                "operationId": "53652ca2529b0426871b2555b3526d30",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -295,7 +405,18 @@
                     "Species"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "d7e706771a5ba3d553e147cde252357e",
+                "operationId": "bc40d711270f593a6f3ed50a201dcd4c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -310,7 +431,18 @@
                     "Species"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "148320d47e127c3ec30938e4570e486c",
+                "operationId": "747f252c1c39ca2412455caedb25624e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -336,15 +468,41 @@
                         "description": "Retourne la liste des films"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "4b8e606ab0ff253bce0652a25f68628e",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
             }
         },
-        "/api/starships/:id": {
+        "/api/starships/{id}": {
             "get": {
                 "tags": [
                     "Starships"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "6f58f07cf660de4f39c0a3418c223bd9",
+                "operationId": "746c1efb4ceccedd68fb022f5440f209",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -359,22 +517,18 @@
                     "Starships"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "f340b5d8d6f1087f00bb6db0cc34a0a0",
-                "responses": {
-                    "400": {
-                        "description": "Invalid request"
-                    },
-                    "200": {
-                        "description": "Retourne la liste des films"
+                "operationId": "a738f207b45d76972796745bb1d36730",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Starships"
                 ],
-                "summary": "Get a list of users",
-                "operationId": "e500c40c90294c32714da3f8480e13e4",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -389,7 +543,18 @@
                     "Starships"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "8a819a95c1437b64eb58e4fb6d47f74b",
+                "operationId": "4e042eb72118e76a7121f00963e104c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -432,13 +597,13 @@
                 }
             }
         },
-        "/api/vehicles/:id": {
+        "/api/vehicles/{id}": {
             "get": {
                 "tags": [
                     "Vehicle"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "ebf49f38b450cbecf310146886d6b229",
+                "operationId": "4e2ce1b7fef40fd560c9b21476270e92",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -453,7 +618,7 @@
                     "Vehicle"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "faa67fe1fbeb2253fce5d8ed12beb1dd",
+                "operationId": "9d3adda0a00b56831ea9d06e550a0aa3",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -468,7 +633,7 @@
                     "Vehicle"
                 ],
                 "summary": "Get a list of users",
-                "operationId": "29c62cef0775d8c14d096b26d4b7a2c1",
+                "operationId": "95ddbe5ff32596e76c82bab67c10267a",
                 "responses": {
                     "400": {
                         "description": "Invalid request"

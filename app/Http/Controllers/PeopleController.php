@@ -23,7 +23,16 @@ class PeopleController extends Controller
     
 /**
  * @OA\Get(
- *     path="/api/people/:id",
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -52,7 +61,16 @@ class PeopleController extends Controller
 
 /**
  * @OA\Put(
- *     path="/api/people/:id",
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -67,7 +85,16 @@ class PeopleController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/api/people/:id",
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Get a list of users",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
