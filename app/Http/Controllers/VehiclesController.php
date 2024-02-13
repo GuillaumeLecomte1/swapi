@@ -8,43 +8,73 @@ use App\Models\Vehicles;
 class VehiclesController extends Controller
 {
 /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/vehicles",
+ *     summary="Get a list of users",
+ *     tags={"Vehicle"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function readAll()
     {
         $vehicles = Vehicles::all();
         return response()->json($vehicles);
     }
     
-    /**
-     * Display the specified resource.
-     */
+/**
+ * @OA\Get(
+ *     path="/api/vehicles/{id}",
+ *     summary="Get a list of users",
+ *     tags={"Vehicle"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function read(string $id)
     {
         $vehicles = Vehicles::find($id);
         return response()->json($vehicles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+/**
+ * @OA\Post(
+ *     path="/api/vehicles",
+ *     summary="Get a list of users",
+ *     tags={"Vehicle"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function create(Request $request)
     {
         $vehicles = Vehicles::create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+/**
+ * @OA\Put(
+ *     path="/api/vehicles/{id}",
+ *     summary="Get a list of users",
+ *     tags={"Vehicle"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $vehicles = Vehicles::find($id);
         $vehicles->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+/**
+ * @OA\Delete(
+ *     path="/api/vehicles/{id}",
+ *     summary="Get a list of users",
+ *     tags={"Vehicle"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function destroy(string $id)
     {
         $vehicles = Vehicles::find($id);

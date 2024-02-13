@@ -8,43 +8,100 @@ use App\Models\Starships;
 class StarshipsController extends Controller
 {
 /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/starships",
+ *     summary="Get a list of users",
+ *     tags={"Starships"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function readAll()
     {
         $starships = Starships::all();
         return response()->json($starships);
     }
     
-    /**
-     * Display the specified resource.
-     */
+/**
+ * @OA\Get(
+ *     path="/api/starships/{id}",
+ *   @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Starships"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function read(string $id)
     {
         $starships = Starships::find($id);
         return response()->json($starships);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+/**
+ * @OA\Post(
+ *     path="/api/starships",
+ *     summary="Get a list of users",
+ *     tags={"Starships"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function create(Request $request)
     {
         $starships = Starships::create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+/**
+ * @OA\Put(
+ *     path="/api/starships/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Starships"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $starships = Starships::find($id);
         $starships->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+/**
+ * @OA\Delete(
+ *     path="/api/starships/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Starships"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function destroy(string $id)
     {
         $starships = Starships::find($id);

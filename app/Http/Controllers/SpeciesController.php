@@ -8,43 +8,100 @@ use App\Models\Species;
 class SpeciesController extends Controller
 {
 /**
-     * Display a listing of the resource.
-     */
+ * @OA\Get(
+ *     path="/api/species",
+ *     summary="Get a list of users",
+ *     tags={"Species"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function readAll()
     {
         $species = Species::all();
         return response()->json($species);
     }
     
-    /**
-     * Display the specified resource.
-     */
+/**
+ * @OA\Get(
+ *     path="/api/species/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Species"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function read(string $id)
     {
         $species = Species::find($id);
         return response()->json($species);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+/**
+ * @OA\Post(
+ *     path="/api/species",
+ *     summary="Get a list of users",
+ *     tags={"Species"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function create(Request $request)
     {
         $species = Species::create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+/**
+ * @OA\Put(
+ *     path="/api/species/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Species"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $species = Species::find($id);
         $species->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+/**
+ * @OA\Delete(
+ *     path="/api/species/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"Species"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function destroy(string $id)
     {
         $species = Species::find($id);

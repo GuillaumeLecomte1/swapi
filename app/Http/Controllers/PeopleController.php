@@ -1,16 +1,4 @@
 <?php
-/**
- 
-openapi: 3.0.0  
-@OA\Info(
-version="1.0.0",
-title="Documentation de l'API SWAPI",
-description="API pour interagir avec SWAPI (Star Wars API)",
-@OA\Contact(
-email="contact@example.com"
-)
-)
-*/
 namespace App\Http\Controllers;
 
 use App\Models\People;
@@ -18,44 +6,101 @@ use Illuminate\Http\Request;
 
 class PeopleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+/**
+ * @OA\Get(
+ *     path="/api/people",
+ *     summary="Get a list of users",
+ *     tags={"People"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function readAll()
     {
         $people = People::all();
         return response()->json($people);
     }
     
-    /**
-     * Display the specified resource.
-     */
+/**
+ * @OA\Get(
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"People"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function read(string $id)
     {
         $people = People::find($id);
         return response()->json($people);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+/**
+ * @OA\Post(
+ *     path="/api/people",
+ *     summary="Get a list of users",
+ *     tags={"People"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function create(Request $request)
     {
         $people = People::create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+/**
+ * @OA\Put(
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"People"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $people = People::find($id);
         $people->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+/**
+ * @OA\Delete(
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Get a list of users",
+ *     tags={"People"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function destroy(string $id)
     {
         $people = People::find($id);

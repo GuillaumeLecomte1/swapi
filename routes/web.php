@@ -28,11 +28,3 @@ use OpenApi\Annotations as OA;
 Route::get('/', function () {
     return view('welcome');
 });
-
-/**
- * @OA\Get(
- *     path="/films",
- *     @OA\Response(response="200", description="Retourne la liste des films")
- * )
- */
-Route::get('/api/films', 'SwapiController@getFilms');
