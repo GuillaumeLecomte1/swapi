@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicles extends Model
 {
     protected $fillable = [
-        'name', 'model', 'vehicle_class', 'manufacturer', 'cost_in_credits', 'length', 'crew', 'passengers',
-        'max_atmosphering_speed', 'cargo_capacity', 'consumables',
+        'vehicle_class',
     ];
 
     public function films()

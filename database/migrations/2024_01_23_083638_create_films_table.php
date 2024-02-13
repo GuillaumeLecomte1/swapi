@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->integer("episode_id");
-            $table->text("opening_crawl");
-            $table->string("director");
+            $table->timestamp("edited");
             $table->string("producer");
+            $table->string("title");
+            $table->timestamp("created");
+            $table->integer("episode_id");
+            $table->string("director");
             $table->date("release_date");
-            $table->timestamps();
+            $table->text("opening_crawl");
         });
 
         // Table de liaison avec planets

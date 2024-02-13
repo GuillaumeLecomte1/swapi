@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string("birth_year");
-            $table->string("eye_color");
+            $table->timestamp("edited");
+            $table->string("name");
+            $table->timestamp("created");
             $table->string("gender");
+            $table->string("skin_color");
             $table->string("hair_color");
             $table->integer("height");
-            $table->unsignedBigInteger('homeworld');
+            $table->string("eye_color");
             $table->integer("mass");
-            $table->string("name");
-            $table->string("skin_color");
-            $table->timestamps();
+            $table->unsignedBigInteger('homeworld');
+            $table->string("birth_year");
 
             $table->foreign('homeworld')->references('id')->on('planets')->onDelete('cascade');
-        
         });
 
         // Table de liaison avec films
@@ -37,17 +37,6 @@ return new class extends Migration
 
             $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
             $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
-        });
-
-        // Table de liaison avec planets
-        Schema::create('people_planets', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('people_id');
-            $table->unsignedBigInteger('planet_id');
-            $table->timestamps();
-
-            $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
-            $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
         });
 
         // Table de liaison avec species

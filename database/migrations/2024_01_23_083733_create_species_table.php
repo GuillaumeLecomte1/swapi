@@ -12,18 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('species', function (Blueprint $table) {
-            $table->id();
-            $table->string("name");
+            $table->timestamp('edited');
             $table->string("classification");
+            $table->string("name");
             $table->string("designation");
-            $table->string("average_height");
-            $table->string("average_lifespan");
+            $table->timestamp('created');
             $table->string("eye_colors");
-            $table->string("hair_colors");
             $table->string("skin_colors");
             $table->string("language");
+            $table->string("hair_colors");
             $table->unsignedBigInteger('homeworld');
-            $table->timestamps();
+            $table->string("average_lifespan");
+            $table->string("average_height");
+            $table->id();
 
             $table->foreign('homeworld')->references('id')->on('planets')->onDelete('cascade');
        
