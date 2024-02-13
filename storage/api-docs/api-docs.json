@@ -117,13 +117,13 @@
                 }
             }
         },
-        "/login": {
+        "/api/login": {
             "post": {
                 "tags": [
                     "User"
                 ],
                 "summary": "connecte un utilisateur",
-                "operationId": "d55f416d61f094eb6038b566bc6e4596",
+                "operationId": "c5e838284c7f343f0e5e5fd589161c96",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -156,13 +156,13 @@
                 }
             }
         },
-        "/logout": {
+        "/api/logout": {
             "post": {
                 "tags": [
                     "User"
                 ],
                 "summary": "déconnecte un utilisateur",
-                "operationId": "7f261a1e14b78ceb6cadbe969582a855",
+                "operationId": "399284ae5e84627c95a691127018a412",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -195,13 +195,13 @@
                 }
             }
         },
-        "/register": {
+        "/api/register": {
             "post": {
                 "tags": [
                     "User"
                 ],
                 "summary": "créer un utilisateur",
-                "operationId": "d82491bd4e2b61e1b17d37628d08b5a4",
+                "operationId": "a39949df013c1eb78ff8bd8f481d408a",
                 "requestBody": {
                     "required": true,
                     "content": {

@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
 /**
  * @OA\Post(
- *     path="/login",
+ *     path="/api/login",
  *     summary="connecte un utilisateur",
  *     tags={"User"},
  *     @OA\RequestBody(
@@ -43,7 +43,7 @@ class LoginController extends Controller
 
 /**
  * @OA\Post(
- *     path="/logout",
+ *     path="/api/logout",
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\MediaType(
@@ -71,7 +71,7 @@ class LoginController extends Controller
 
 /**
  * @OA\Post(
- *     path="/register",
+ *     path="/api/register",
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\MediaType(
@@ -90,10 +90,15 @@ class LoginController extends Controller
  */
     public function register(Request $request)
     {
+        // $request->validate([
+        //     'mail' => 'required|email|unique:users',
+        //     'password' => 'required|min:8',
+        // ]);
         $user = User::create([
             'mail' => $request->mail,
             'password' => Hash::make($request->password),
         ]);
-        Auth::login($user);
+        $user->save();
+        dd($user);
     }
 }

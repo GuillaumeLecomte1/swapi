@@ -8,6 +8,7 @@ use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\SpeciesController;
 use App\Http\Controllers\VehiclesController;
 use App\Http\Controllers\StarshipsController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,10 +23,6 @@ use App\Http\Controllers\StarshipsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-// Route::get('/films', function () {
-//     return response()->json(['message' => 'SWAPI']);
-// });
 
 Route::get('/people', [PeopleController::class, 'readAll']);
 Route::get('/people/{id}', [PeopleController::class, 'read']);
@@ -62,3 +59,7 @@ Route::get('/starships/{id}', [StarshipsController::class, 'read']);
 Route::post('/starships', [StarshipsController::class, 'create']);
 Route::put('/starships/{id}', [StarshipsController::class, 'update']);
 Route::delete('/starships/{id}', [StarshipsController::class, 'destroy']);
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/register', [LoginController::class, 'register'])->name('register');

@@ -11,7 +11,6 @@
  * )
  */
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use OpenApi\Annotations as OA;
 
@@ -25,15 +24,3 @@ use OpenApi\Annotations as OA;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/register', [LoginController::class, 'register'])->name('register');
