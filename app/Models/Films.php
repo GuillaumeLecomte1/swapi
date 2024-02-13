@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\People;
+use App\Models\Planet;
+use App\Models\Starship;
+use App\Models\Vehicle;
 
 class Films extends Model
 {

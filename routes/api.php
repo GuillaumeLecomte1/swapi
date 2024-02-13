@@ -23,6 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Route::get('/films', function () {
+//     return response()->json(['message' => 'SWAPI']);
+// });
+
 Route::get('/people', [PeopleController::class, 'readAll']);
 Route::get('/people/{id}', [PeopleController::class, 'read']);
 Route::post('/people', [PeopleController::class, 'create']);

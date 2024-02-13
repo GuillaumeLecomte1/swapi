@@ -1,0 +1,69 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "APIs SWAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/films": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "868c81d9ba6dfd7ef6c2b31502fae834",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "92bea0b4038986c2ee2a4b185f912af3",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/films/:id": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "eb4ff73e13c6089a8fe715b59878786e",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
