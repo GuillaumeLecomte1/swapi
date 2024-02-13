@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Starships;
+use App\Models\Transports;
+use Symfony\Component\Mailer\Transport;
 
 class StarshipsController extends Controller
 {
@@ -19,6 +21,10 @@ class StarshipsController extends Controller
     public function readAll()
     {
         $starships = Starships::all();
+        foreach($starships as $starship){
+            $transport = Transports::find($starship["id_transport"]);
+            $starship['transport'] = $transport;
+        }
         return response()->json($starships);
     }
     
@@ -43,6 +49,8 @@ class StarshipsController extends Controller
     public function read(string $id)
     {
         $starships = Starships::find($id);
+        $transport = Transports::find($starships["id_transport"]);
+        $starships['transport'] = $transport;
         return response()->json($starships);
     }
 
