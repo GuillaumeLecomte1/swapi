@@ -124,17 +124,28 @@
                 ],
                 "summary": "connecte un utilisateur",
                 "operationId": "d55f416d61f094eb6038b566bc6e4596",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID du film",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "test1@test.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -152,6 +163,28 @@
                 ],
                 "summary": "déconnecte un utilisateur",
                 "operationId": "7f261a1e14b78ceb6cadbe969582a855",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "test1@test.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -183,7 +216,7 @@
                                     "password": {
                                         "type": "string",
                                         "format": "password",
-                                        "example": "securepassword"
+                                        "example": "test"
                                     }
                                 },
                                 "type": "object"
