@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string("MGLT");
             $table->string("starship_class");
             $table->string("hyperdrive_rating");
+            $table->unsignedBigInteger('id_transport');
+
+            $table->foreign('id_transport')->references('id')->on('transports')->onDelete('cascade');
+
         });
     }
 

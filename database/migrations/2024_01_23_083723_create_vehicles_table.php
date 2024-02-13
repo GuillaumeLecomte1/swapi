@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string("vehicle_class");
             $table->timestamps();
+            $table->unsignedBigInteger('id_transport');
+
+            $table->foreign('id_transport')->references('id')->on('transports')->onDelete('cascade');
         });
     }
 
