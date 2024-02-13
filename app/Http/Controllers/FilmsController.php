@@ -51,18 +51,30 @@ class FilmsController extends Controller
         $films = Films::create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+/**
+ * @OA\Put(
+ *     path="/api/films/:id",
+ *     summary="Get a list of users",
+ *     tags={"Films"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $films = Films::find($id);
         $films->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+/**
+ * @OA\Delete(
+ *     path="/api/films/:id",
+ *     summary="Get a list of users",
+ *     tags={"Films"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Retourne la liste des films")
+ * )
+ */
     public function destroy(string $id)
     {
         $films = Films::find($id);

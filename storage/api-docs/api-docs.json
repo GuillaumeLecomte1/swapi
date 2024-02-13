@@ -52,6 +52,431 @@
                         "description": "Retourne la liste des films"
                     }
                 }
+            },
+            "put": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "a78e329b92dee0a7968742a71f8a6e7c",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "e2c84ab36bfb6b7e7ff588fd5d020b4f",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/people": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "9c4a4198e78ac76a924cb30187046a1c",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "b81ee5672d4638c3ba86bd3d8ff4a60b",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/people/:id": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "74fe4f3ad8e2bfd02119e9be715f4389",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "db9d5a720612691336d8c5786138aa9f",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "4165744bfe4434ae043deb5d2cf729c2",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/planets": {
+            "get": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "24f72d72b9702ebaa8e3637d42c8b8f1",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "75f1b7ea6dd8c85b6371a7afc3296198",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/planets/:id": {
+            "get": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "778d091d1bc336b51bfb789a052a3baf",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "a098681ef4a577921e0b3a4d0472c236",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "08b17d0dbac49d0c81bf6e00af3109e5",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/species": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "33bc13e65a1f56579f5a6b06cc8590a9",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "9b236b196cd5f3b0968eeef5b10aa02e",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/species/:id": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "be2c9eac066a4ff468ecfaae1f3d936f",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "d7e706771a5ba3d553e147cde252357e",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "148320d47e127c3ec30938e4570e486c",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/starships": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "0a0bde13bcf4e91a94d97408b50e15c4",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/starships/:id": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "6f58f07cf660de4f39c0a3418c223bd9",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "f340b5d8d6f1087f00bb6db0cc34a0a0",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "e500c40c90294c32714da3f8480e13e4",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "8a819a95c1437b64eb58e4fb6d47f74b",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "b659f082b7df23b2049c6cffcb50cd3f",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "fcbb14b08761a447e6e4df8f864409ff",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/:id": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "ebf49f38b450cbecf310146886d6b229",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "faa67fe1fbeb2253fce5d8ed12beb1dd",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get a list of users",
+                "operationId": "29c62cef0775d8c14d096b26d4b7a2c1",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
             }
         }
     },
