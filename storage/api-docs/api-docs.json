@@ -163,28 +163,6 @@
                 ],
                 "summary": "déconnecte un utilisateur",
                 "operationId": "399284ae5e84627c95a691127018a412",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "mail": {
-                                        "type": "string",
-                                        "format": "email",
-                                        "example": "test1@test.com"
-                                    },
-                                    "password": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "test"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"

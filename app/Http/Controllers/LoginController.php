@@ -31,60 +31,46 @@ class LoginController extends Controller
  */
     public function login(Request $request)
     {
-        // $credentials = $request->only('mail', 'password');
-
-        // if ($token = $this->guard()->attempt($credentials)) {
-        //     return $this->respondWithToken($token);
-        // }
-
-        // return response()->json(['error' => 'Unauthorized'], 401);
-
-        // JWTAuth
-        $token = JWTAuth::attempt([
-            "email" => $request->email,
-            "password" => $request->password
-        ]);
-
-        if(!empty($token)){
-
+        // Tentative d'authentification avec JWTAuth
+        $credentials = $request->only('mail', 'password');
+        if ($token = JWTAuth::attempt($credentials)) {
+            // Authentification réussie, retourne le token
             return response()->json([
-                "status" => true,
-                "message" => "User logged in succcessfully",
-                "token" => $token
+                'status' => true,
+                'message' => 'User logged in successfully',
+                'token' => $token
             ]);
         }
 
+        // Authentification échouée, retourner une réponse err
         return response()->json([
-            "status" => false,
-            "message" => "Invalid details"
-        ]);
+            'status' => false,
+            'message' => 'Invalid credentials'
+        ], 401);
     }
 
 
 /**
  * @OA\Post(
  *     path="/api/logout",
- *     @OA\RequestBody(
- *         required=true,
- *         @OA\MediaType(
- *             mediaType="application/json",
- *             @OA\Schema(
- *                 @OA\Property(property="mail", type="string", format="email", example="test1@test.com"),
- *                 @OA\Property(property="password", type="string", format="password", example="test"),
- *             )
- *         )
- *     ),
  *     summary="déconnecte un utilisateur",
  *     tags={"User"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Se déconnecter à l'API")
  * )
  */
-    public function logout(Request $request)
+    public function logout()
     {
-        $this->guard()->logout();
+        // Invalider le token pour l'utilisateur actuel
+        JWTAuth::invalidate(JWTAuth::getToken());
 
-        return response()->json(['message' => 'Successfully logged out']);
+        // Vous pouvez également invalider tous les tokens pour cet utilisateur
+        // JWTAuth::invalidate(JWTAuth::getToken(), true);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User logged out successfully',
+        ]);
     }
 
 
