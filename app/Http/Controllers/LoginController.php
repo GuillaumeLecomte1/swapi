@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
 
 class LoginController extends Controller
@@ -30,13 +31,32 @@ class LoginController extends Controller
  */
     public function login(Request $request)
     {
-        $credentials = $request->only('mail', 'password');
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            // return redirect('/api/documentation');
+        // $credentials = $request->only('mail', 'password');
+
+        // if ($token = $this->guard()->attempt($credentials)) {
+        //     return $this->respondWithToken($token);
+        // }
+
+        // return response()->json(['error' => 'Unauthorized'], 401);
+
+        // JWTAuth
+        $token = JWTAuth::attempt([
+            "email" => $request->email,
+            "password" => $request->password
+        ]);
+
+        if(!empty($token)){
+
+            return response()->json([
+                "status" => true,
+                "message" => "User logged in succcessfully",
+                "token" => $token
+            ]);
         }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+
+        return response()->json([
+            "status" => false,
+            "message" => "Invalid details"
         ]);
     }
 
@@ -62,10 +82,9 @@ class LoginController extends Controller
  */
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        // return view('welcome');
+        $this->guard()->logout();
+
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
 
@@ -90,15 +109,15 @@ class LoginController extends Controller
  */
     public function register(Request $request)
     {
-        // $request->validate([
-        //     'mail' => 'required|email|unique:users',
-        //     'password' => 'required|min:8',
-        // ]);
-        $user = User::create([
+        User::create([
             'mail' => $request->mail,
             'password' => Hash::make($request->password),
         ]);
-        $user->save();
-        dd($user);
+
+        // Response
+        return response()->json([
+            "status" => true,
+            "message" => "User registered successfully"
+        ]);
     }
 }

@@ -60,6 +60,13 @@ Route::post('/starships', [StarshipsController::class, 'create']);
 Route::put('/starships/{id}', [StarshipsController::class, 'update']);
 Route::delete('/starships/{id}', [StarshipsController::class, 'destroy']);
 
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
+
+Route::group([
+    "middleware" => ["auth:api"]
+], function(){
+    
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});

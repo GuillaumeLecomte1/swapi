@@ -297,4 +297,11 @@ return [
 
         'storage' => PHPOpenSourceSaver\JWTAuth\Providers\Storage\Illuminate::class,
     ],
+
+    'blacklist' => [
+        'enabled' => true,
+        'provider' => 'PHPOpenSourceSaver\JWTAuth\Providers\Blacklist\Illuminate',
+        'storage' => PHPOpenSourceSaver\JWTAuth\Providers\Storage\Illuminate::class,
+    ],    
+
 ];
