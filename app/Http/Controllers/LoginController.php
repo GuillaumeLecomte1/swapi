@@ -35,11 +35,15 @@ class LoginController extends Controller
         $credentials = $request->only('mail', 'password');
         if ($token = JWTAuth::attempt($credentials)) {
             // Authentification réussie, retourne le token
-            return response()->json([
+            $response = response()->json([
                 'status' => true,
                 'message' => 'User logged in successfully',
                 'token' => $token
             ]);
+
+            $response->cookie('token', $token, 3600);
+
+            return $response;
         }
 
         // Authentification échouée, retourner une réponse err
@@ -105,5 +109,20 @@ class LoginController extends Controller
             "status" => true,
             "message" => "User registered successfully"
         ]);
+    }
+
+
+/**
+ * @OA\Get(
+ *     path="/api/test/test",
+ *     summary="Test du Auth jwt",
+ *     tags={"User"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Auth jwt")
+ * )
+ */
+    public function testtest(Request $request)
+    {
+        return 'Test auth middleware done';
     }
 }

@@ -24,3 +24,5 @@ use OpenApi\Annotations as OA;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::redirect('/', 'api/documentation');

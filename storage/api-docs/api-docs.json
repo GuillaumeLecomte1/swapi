@@ -212,6 +212,23 @@
                 }
             }
         },
+        "/api/test/test": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Test du Auth jwt",
+                "operationId": "54ecf97e3ee3df962668eccfde7fcfe8",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Auth jwt"
+                    }
+                }
+            }
+        },
         "/api/people": {
             "get": {
                 "tags": [
