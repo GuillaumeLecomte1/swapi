@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('mail');
             $table->string('password');
+            $table->timestamps();
         });
     }
 

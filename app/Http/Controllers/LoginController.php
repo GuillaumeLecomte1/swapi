@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
 
 class LoginController extends Controller
 {
 /**
  * @OA\Post(
- *     path="/login",
+ *     path="/api/login",
  *     summary="connecte un utilisateur",
  *     tags={"User"},
  *     @OA\RequestBody(
@@ -30,48 +31,56 @@ class LoginController extends Controller
  */
     public function login(Request $request)
     {
+        // Tentative d'authentification avec JWTAuth
         $credentials = $request->only('mail', 'password');
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            // return redirect('/api/documentation');
+        if ($token = JWTAuth::attempt($credentials)) {
+            // Authentification réussie, retourne le token
+            $response = response()->json([
+                'status' => true,
+                'message' => 'User logged in successfully',
+                'token' => $token
+            ]);
+
+            $response->cookie('token', $token, 3600);
+
+            return $response;
         }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+
+        // Authentification échouée, retourner une réponse err
+        return response()->json([
+            'status' => false,
+            'message' => 'Invalid credentials'
+        ], 401);
     }
 
 
 /**
  * @OA\Post(
- *     path="/logout",
- *     @OA\RequestBody(
- *         required=true,
- *         @OA\MediaType(
- *             mediaType="application/json",
- *             @OA\Schema(
- *                 @OA\Property(property="mail", type="string", format="email", example="test1@test.com"),
- *                 @OA\Property(property="password", type="string", format="password", example="test"),
- *             )
- *         )
- *     ),
+ *     path="/api/logout",
  *     summary="déconnecte un utilisateur",
  *     tags={"User"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Se déconnecter à l'API")
  * )
  */
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        // return view('welcome');
+        // Invalider le token pour l'utilisateur actuel
+        JWTAuth::invalidate(JWTAuth::getToken());
+
+        // Vous pouvez également invalider tous les tokens pour cet utilisateur
+        // JWTAuth::invalidate(JWTAuth::getToken(), true);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User logged out successfully',
+        ]);
     }
 
 
 /**
  * @OA\Post(
- *     path="/register",
+ *     path="/api/register",
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\MediaType(
@@ -90,10 +99,30 @@ class LoginController extends Controller
  */
     public function register(Request $request)
     {
-        $user = User::create([
+        User::create([
             'mail' => $request->mail,
             'password' => Hash::make($request->password),
         ]);
-        Auth::login($user);
+
+        // Response
+        return response()->json([
+            "status" => true,
+            "message" => "User registered successfully"
+        ]);
+    }
+
+
+/**
+ * @OA\Get(
+ *     path="/api/test/test",
+ *     summary="Test du Auth jwt",
+ *     tags={"User"},
+ *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response="200", description="Auth jwt")
+ * )
+ */
+    public function testtest(Request $request)
+    {
+        return 'Test auth middleware done';
     }
 }
