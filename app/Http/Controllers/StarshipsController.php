@@ -12,10 +12,10 @@ class StarshipsController extends Controller
 /**
  * @OA\Get(
  *     path="/api/starships",
- *     summary="Get a list of users",
+ *     summary="Get a list of starships",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne la liste des starships")
  * )
  */
     public function readAll()
@@ -35,15 +35,15 @@ class StarshipsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du Starship",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Get one starship",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne un starship")
  * )
  */
     public function read(string $id)

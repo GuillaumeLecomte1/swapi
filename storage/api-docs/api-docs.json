@@ -575,14 +575,14 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Get a list of starships",
                 "operationId": "0a0bde13bcf4e91a94d97408b50e15c4",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la liste des starships"
                     }
                 }
             },
@@ -607,13 +607,13 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Get one starship",
                 "operationId": "746c1efb4ceccedd68fb022f5440f209",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du Starship",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -625,7 +625,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne un starship"
                     }
                 }
             },

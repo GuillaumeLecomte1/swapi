@@ -13,7 +13,7 @@ class Planets extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_planets');
+        return $this->belongsToMany(Films::class, 'film_planets');
     }
 
     public function people()

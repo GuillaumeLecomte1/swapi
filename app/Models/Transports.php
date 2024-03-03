@@ -24,11 +24,11 @@ class Transports extends Model
 
     public function vehicles()
     {
-        return $this->hasMany(Vehicle::class);
+        return $this->hasMany(Vehicles::class);
     }
 
     public function starships()
     {
-        return $this->hasMany(Starship::class);
+        return $this->hasMany(Starships::class);
     }
 }

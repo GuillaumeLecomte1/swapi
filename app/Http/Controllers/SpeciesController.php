@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Films;
+use App\Models\People;
+use App\Models\Planets;
 use Illuminate\Http\Request;
 use App\Models\Species;
+use Illuminate\Support\Facades\DB;
 
 class SpeciesController extends Controller
 {
@@ -19,6 +23,27 @@ class SpeciesController extends Controller
     public function readAll()
     {
         $species = Species::all();
+        foreach($species as $specie){
+            $homeworld = Planets::find($specie['homeworld']);
+            $people_specie = DB::table('people_species')->where('species_id',$specie['id'])->get();
+            $films_specie = DB::table('film_species')->where('films_id',$specie['id'])->get();
+
+            $list_people = array();
+            foreach($people_specie as $p_s){
+                array_push($list_people,People::find($p_s->people_id));
+                //$list_people[] = People::find($p_s->people_id);
+            }
+
+            $list_films = array();
+            foreach($people_specie as $p_s){
+                array_push($list_people,People::find($p_s->people_id));
+                //$list_people[] = People::find($p_s->people_id);
+            }
+
+
+            $specie['people'] = $list_people;
+            $specie['homeworld'] = $homeworld;
+        }
         return response()->json($species);
     }
     

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transports;
 use Illuminate\Http\Request;
 use App\Models\Vehicles;
 
@@ -19,6 +20,10 @@ class VehiclesController extends Controller
     public function readAll()
     {
         $vehicles = Vehicles::all();
+        foreach($vehicles as $vehicle){
+            $transport = Transports::find($vehicle["id_transport"]);
+            $vehicles['transport'] = $transport;
+        }
         return response()->json($vehicles);
     }
     
@@ -34,6 +39,8 @@ class VehiclesController extends Controller
     public function read(string $id)
     {
         $vehicles = Vehicles::find($id);
+        $transport = Transports::find($vehicles["id_transport"]);
+        $vehicles['transport'] = $transport;
         return response()->json($vehicles);
     }
 

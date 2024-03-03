@@ -22,12 +22,12 @@ class People extends Model
 
     public function homeworld()
     {
-        return $this->belongsTo(Planet::class, 'homeworld');
+        return $this->belongsTo(Planets::class, 'homeworld');
     }
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'people_films', 'people_id', 'film_id');
+        return $this->belongsToMany(Films::class, 'people_films', 'people_id', 'film_id');
     }
 
     public function species()

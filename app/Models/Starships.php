@@ -13,7 +13,7 @@ class Starships extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_starships');
+        return $this->belongsToMany(Films::class, 'film_starships');
     }
 
     public function pilots()

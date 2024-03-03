@@ -13,7 +13,7 @@ class Species extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Film::class, 'film_species');
+        return $this->belongsToMany(Films::class, 'film_species');
     }
 
     public function people()

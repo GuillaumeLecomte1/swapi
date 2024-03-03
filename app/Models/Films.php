@@ -27,17 +27,17 @@ class Films extends Model
 
     public function planets()
     {
-        return $this->belongsToMany(Planet::class, 'film_planets', 'film_id', 'planet_id');
+        return $this->belongsToMany(Planets::class, 'film_planets', 'film_id', 'planet_id');
     }
 
     public function starships()
     {
-        return $this->belongsToMany(Starship::class, 'film_starships', 'film_id', 'starship_id');
+        return $this->belongsToMany(Starships::class, 'film_starships', 'film_id', 'starship_id');
     }
 
     public function vehicles()
     {
-        return $this->belongsToMany(Vehicle::class, 'film_vehicles', 'film_id', 'vehicle_id');
+        return $this->belongsToMany(Vehicles::class, 'film_vehicles', 'film_id', 'vehicle_id');
     }
 
     public function species()
