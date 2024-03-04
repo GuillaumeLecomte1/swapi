@@ -24,6 +24,13 @@ use App\Http\Middleware\AuthJwt;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// User routes
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('test/test', [LoginController::class, 'testtest']);
+
 Route::middleware([AuthJwt::class])->group(function(){
 
 // People routes
@@ -68,9 +75,5 @@ Route::post('/starships', [StarshipsController::class, 'create']);
 Route::put('/starships/{id}', [StarshipsController::class, 'update']);
 Route::delete('/starships/{id}', [StarshipsController::class, 'destroy']);
 
-// User routes
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('test/test', [LoginController::class, 'testtest']);
+
 });
