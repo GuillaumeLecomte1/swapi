@@ -13,7 +13,7 @@ class PlanetsController extends Controller
  *     summary="Afficher la listes des planètes",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne la liste des planètes")
  * )
  */
     public function readAll()
@@ -57,7 +57,7 @@ class PlanetsController extends Controller
  *     summary="Afficher une planète à l'aide de son id",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne la planète ciblée par l'id passé en paramètre")
  * )
  */
     public function read(string $id)
@@ -93,7 +93,7 @@ class PlanetsController extends Controller
  *     summary="Crée une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Création d'une planète")
  * )
  */
     public function create(Request $request)
@@ -116,7 +116,7 @@ class PlanetsController extends Controller
  *     summary="Modifie une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Modification d'une planète")
  * )
  */
     public function update(Request $request, string $id)
@@ -140,7 +140,7 @@ class PlanetsController extends Controller
  *     summary="Supprimer une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'une planète")
  * )
  */
     public function destroy(string $id)

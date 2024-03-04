@@ -364,7 +364,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la liste des planètes"
                     }
                 }
             },
@@ -379,7 +379,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Création d'une planète"
                     }
                 }
             }
@@ -407,7 +407,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la planète ciblée par l'id passé en paramètre"
                     }
                 }
             },
@@ -433,7 +433,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Modification d'une planète"
                     }
                 }
             },
@@ -459,7 +459,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'une planète"
                     }
                 }
             }
@@ -491,7 +491,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Création d'une espèce avec succès"
                     }
                 }
             }
@@ -519,7 +519,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne un species"
+                        "description": "Afficher une espèce à l'aide de son id"
                     }
                 }
             },
@@ -545,7 +545,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Modification d'une espèce avec succès"
                     }
                 }
             },
@@ -571,7 +571,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'une espèce avec succès"
                     }
                 }
             }
@@ -710,12 +710,66 @@
                 ],
                 "summary": "Créer un véhicule",
                 "operationId": "fcbb14b08761a447e6e4df8f864409ff",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Speeder Bike"
+                                    },
+                                    "cargo_capacity": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 5
+                                    },
+                                    "consumables": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "1 day"
+                                    },
+                                    "transport_id": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 1
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "people": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Création d'un véhicule"
+                        "description": "Création d'un véhicule réussie"
                     }
                 }
             }
