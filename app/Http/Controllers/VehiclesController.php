@@ -14,7 +14,7 @@ class VehiclesController extends Controller
  *     summary="Afficher la liste des véhicules",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des véhicules")
+ *     @OA\Response(response="200", description="Retourne la liste des véhicules avec succès")
  * )
  */
     public function readAll()
@@ -60,7 +60,7 @@ class VehiclesController extends Controller
  *     summary="Afficher un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne le véhicule ciblé par l'id passé en paramètre")
+ *     @OA\Response(response="200", description="Retourne le véhicule ciblé par l'id passé en paramètre avec succès")
  * )
  */
     public function read(string $id)
@@ -138,14 +138,32 @@ class VehiclesController extends Controller
  *       in="path",
  *       required=true,
  *       description="ID du Vehicule",
- *       @OA\Schema(
- *       type="integer"
- *       )
- *   ),
- *     summary="Modifier un véhicule à l'aide de son id",
- *     tags={"Vehicle"},
+ *        @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", format="text", example="Speeder Bike"),
+ *                 @OA\Property(property="cargo_capacity", type="integer", format="int32", example=5),
+ *                 @OA\Property(property="consumables", type="string", format="text", example="1 day"),
+ *                 @OA\Property(property="transport_id", type="integer", format="int32", example=1),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="people",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *             )
+ *         )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Modification d'un véhicule")
+ *     @OA\Response(response="200", description="Modification d'un véhicule avec succès")
  * )
  */
     public function update(Request $request, string $id)
@@ -169,7 +187,7 @@ class VehiclesController extends Controller
  *     summary="Supprimer un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Suppression d'un véhicule")
+ *     @OA\Response(response="200", description="Suppression d'un véhicule avec succès")
  * )
  */
     public function destroy(string $id)
