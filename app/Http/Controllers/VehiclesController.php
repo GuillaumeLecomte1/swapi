@@ -11,10 +11,10 @@ class VehiclesController extends Controller
 /**
  * @OA\Get(
  *     path="/api/vehicles",
- *     summary="Get a list of users",
+ *     summary="Afficher la liste des véhicules",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne la liste des véhicules")
  * )
  */
     public function readAll()
@@ -48,10 +48,10 @@ class VehiclesController extends Controller
 /**
  * @OA\Get(
  *     path="/api/vehicles/{id}",
- *     summary="Get a list of users",
+ *     summary="Afficher un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Affiche le véhicule ciblé par l'id passé en paramètre")
  * )
  */
     public function read(string $id)
@@ -86,10 +86,10 @@ class VehiclesController extends Controller
 /**
  * @OA\Post(
  *     path="/api/vehicles",
- *     summary="Get a list of users",
+ *     summary="Créer un véhicule",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Création d'un véhicule")
  * )
  */
     public function create(Request $request)
@@ -100,10 +100,10 @@ class VehiclesController extends Controller
 /**
  * @OA\Put(
  *     path="/api/vehicles/{id}",
- *     summary="Get a list of users",
+ *     summary="Modifier un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Modification d'un véhicule")
  * )
  */
     public function update(Request $request, string $id)
@@ -115,10 +115,10 @@ class VehiclesController extends Controller
 /**
  * @OA\Delete(
  *     path="/api/vehicles/{id}",
- *     summary="Get a list of users",
+ *     summary="Supprimer un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'un véhicule")
  * )
  */
     public function destroy(string $id)

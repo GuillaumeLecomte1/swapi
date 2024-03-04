@@ -9,10 +9,10 @@ class PeopleController extends Controller
 /**
  * @OA\Get(
  *     path="/api/people",
- *     summary="Get a list of users",
+ *     summary="Afficher la liste des personnages",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne la liste des personnages")
  * )
  */
     public function readAll()
@@ -49,15 +49,15 @@ class PeopleController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du personnage",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Afficher un personnage à l'aide de son id",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne le personnage ciblé par l'id passé en paramètre")
  * )
  */
     public function read(string $id)
@@ -92,8 +92,17 @@ class PeopleController extends Controller
 
 /**
  * @OA\Post(
- *     path="/api/people",
- *     summary="Get a list of users",
+ *     path="/api/people/{id}",
+ * @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du personnage",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Création d'un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -111,12 +120,12 @@ class PeopleController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du personnage",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Modifier un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -135,12 +144,12 @@ class PeopleController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du personnage",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Suppression d'un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")

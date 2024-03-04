@@ -10,7 +10,7 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher la liste des films",
                 "operationId": "868c81d9ba6dfd7ef6c2b31502fae834",
                 "responses": {
                     "400": {
@@ -25,7 +25,7 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Créé un film",
                 "operationId": "92bea0b4038986c2ee2a4b185f912af3",
                 "responses": {
                     "400": {
@@ -42,13 +42,13 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher un film à l'aide de son id",
                 "operationId": "a4df4f825f139541ff446b2eaabf793d",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "Afficher un film à l'aide de son id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -68,7 +68,7 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Modifier un film",
                 "operationId": "e10f6be5a3c1dd6d923fadad783d5ac1",
                 "parameters": [
                     {
@@ -94,7 +94,7 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Supprimer un film",
                 "operationId": "771c10e4bc6b04dc625ec4fef05b4ab0",
                 "parameters": [
                     {
@@ -234,29 +234,14 @@
                 "tags": [
                     "People"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher la liste des personnages",
                 "operationId": "9c4a4198e78ac76a924cb30187046a1c",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "People"
-                ],
-                "summary": "Get a list of users",
-                "operationId": "b81ee5672d4638c3ba86bd3d8ff4a60b",
-                "responses": {
-                    "400": {
-                        "description": "Invalid request"
-                    },
-                    "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la liste des personnages"
                     }
                 }
             }
@@ -266,13 +251,39 @@
                 "tags": [
                     "People"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher un personnage à l'aide de son id",
                 "operationId": "91a4a00c86a8fb033932abdc59c601c2",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du personnage",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne le personnage ciblé par l'id passé en paramètre"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Modifier un personnage",
+                "operationId": "b70c32b8efd74cd5427c2722fa878796",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du personnage",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -288,17 +299,17 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "People"
                 ],
-                "summary": "Get a list of users",
-                "operationId": "b70c32b8efd74cd5427c2722fa878796",
+                "summary": "Création d'un personnage",
+                "operationId": "5380c0547913de0d85be04a9eb84c614",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du personnage",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -318,13 +329,13 @@
                 "tags": [
                     "People"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Suppression d'un personnage",
                 "operationId": "2ccbbf08d5e8c0a60a6abdb71e73a7a6",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du personnage",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -346,7 +357,7 @@
                 "tags": [
                     "Planets"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher la listes des planètes",
                 "operationId": "24f72d72b9702ebaa8e3637d42c8b8f1",
                 "responses": {
                     "400": {
@@ -361,7 +372,7 @@
                 "tags": [
                     "Films"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Crée une planète",
                 "operationId": "75f1b7ea6dd8c85b6371a7afc3296198",
                 "responses": {
                     "400": {
@@ -378,13 +389,13 @@
                 "tags": [
                     "Planets"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher une planète à l'aide de son id",
                 "operationId": "4954c4dfd1547e0b42d7d4dd2618093e",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de la planète",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -404,13 +415,13 @@
                 "tags": [
                     "Planets"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Modifie une planète",
                 "operationId": "9d014d8e5773db1c11fb1ca00af01b65",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de la planète",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -430,13 +441,13 @@
                 "tags": [
                     "Planets"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Supprimer une planète",
                 "operationId": "5b1ac95d2e5db95291fd132ee5eb9d88",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de la planète",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -458,14 +469,14 @@
                 "tags": [
                     "Species"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher la liste des espèces",
                 "operationId": "33bc13e65a1f56579f5a6b06cc8590a9",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la liste des species"
                     }
                 }
             },
@@ -473,7 +484,7 @@
                 "tags": [
                     "Species"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Crée une espèce",
                 "operationId": "9b236b196cd5f3b0968eeef5b10aa02e",
                 "responses": {
                     "400": {
@@ -490,13 +501,13 @@
                 "tags": [
                     "Species"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher une espèce à l'aide de son id",
                 "operationId": "53652ca2529b0426871b2555b3526d30",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de l'Espcèce",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -508,7 +519,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne un species"
                     }
                 }
             },
@@ -516,13 +527,13 @@
                 "tags": [
                     "Species"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Modifie une espèce",
                 "operationId": "bc40d711270f593a6f3ed50a201dcd4c",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de l'espèce",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -542,13 +553,13 @@
                 "tags": [
                     "Species"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Supprimer une espèce",
                 "operationId": "747f252c1c39ca2412455caedb25624e",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID de l'espèce",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -570,7 +581,7 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of starships",
+                "summary": "Afficher la liste des vaisseaux spatiaux",
                 "operationId": "0a0bde13bcf4e91a94d97408b50e15c4",
                 "responses": {
                     "400": {
@@ -585,14 +596,14 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Crée un vaisseau spatial",
                 "operationId": "4b8e606ab0ff253bce0652a25f68628e",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "création d'un vaisseau spatial"
                     }
                 }
             }
@@ -602,13 +613,13 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get one starship",
+                "summary": "Afficher un vaisseau spatial à l'aide de son id",
                 "operationId": "746c1efb4ceccedd68fb022f5440f209",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du Starship",
+                        "description": "ID du vaissaux spatial",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -628,7 +639,7 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Modifier un vaisseau spatial",
                 "operationId": "a738f207b45d76972796745bb1d36730",
                 "parameters": [
                     {
@@ -646,7 +657,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "modification d'un vaisseau spatial"
                     }
                 }
             },
@@ -654,13 +665,13 @@
                 "tags": [
                     "Starships"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Supprimer un vaisseau spatial",
                 "operationId": "4e042eb72118e76a7121f00963e104c3",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du vaisseau spatial",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -672,7 +683,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'un vaisseau spatial"
                     }
                 }
             }
@@ -682,14 +693,14 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher la liste des véhicules",
                 "operationId": "b659f082b7df23b2049c6cffcb50cd3f",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne la liste des véhicules"
                     }
                 }
             },
@@ -697,14 +708,14 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Créer un véhicule",
                 "operationId": "fcbb14b08761a447e6e4df8f864409ff",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Création d'un véhicule"
                     }
                 }
             }
@@ -714,14 +725,14 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Afficher un véhicule à l'aide de son id",
                 "operationId": "4e2ce1b7fef40fd560c9b21476270e92",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Affiche le véhicule ciblé par l'id passé en paramètre"
                     }
                 }
             },
@@ -729,14 +740,14 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Modifier un véhicule à l'aide de son id",
                 "operationId": "9d3adda0a00b56831ea9d06e550a0aa3",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Modification d'un véhicule"
                     }
                 }
             },
@@ -744,14 +755,14 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Get a list of users",
+                "summary": "Supprimer un véhicule à l'aide de son id",
                 "operationId": "95ddbe5ff32596e76c82bab67c10267a",
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'un véhicule"
                     }
                 }
             }

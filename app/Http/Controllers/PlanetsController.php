@@ -10,7 +10,7 @@ class PlanetsController extends Controller
 /**
  * @OA\Get(
  *     path="/api/planets",
- *     summary="Get a list of users",
+ *     summary="Afficher la listes des planètes",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -48,12 +48,12 @@ class PlanetsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID de la planète",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Afficher une planète à l'aide de son id",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -89,7 +89,7 @@ class PlanetsController extends Controller
 /**
  * @OA\Post(
  *     path="/api/planets",
- *     summary="Get a list of users",
+ *     summary="Crée une planète",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -107,12 +107,12 @@ class PlanetsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID de la planète",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Modifie une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -131,12 +131,12 @@ class PlanetsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID de la planète",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Supprimer une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")

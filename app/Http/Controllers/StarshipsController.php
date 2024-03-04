@@ -12,7 +12,7 @@ class StarshipsController extends Controller
 /**
  * @OA\Get(
  *     path="/api/starships",
- *     summary="Get a list of starships",
+ *     summary="Afficher la liste des vaisseaux spatiaux",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des starships")
@@ -55,12 +55,12 @@ class StarshipsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du Starship",
+ *       description="ID du vaissaux spatial",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get one starship",
+ *     summary="Afficher un vaisseau spatial à l'aide de son id",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne un starship")
@@ -105,10 +105,10 @@ class StarshipsController extends Controller
 /**
  * @OA\Post(
  *     path="/api/starships",
- *     summary="Get a list of users",
+ *     summary="Crée un vaisseau spatial",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="création d'un vaisseau spatial")
  * )
  */
     public function create(Request $request)
@@ -128,10 +128,10 @@ class StarshipsController extends Controller
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Modifier un vaisseau spatial",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="modification d'un vaisseau spatial")
  * )
  */
     public function update(Request $request, string $id)
@@ -147,15 +147,15 @@ class StarshipsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du vaisseau spatial",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Supprimer un vaisseau spatial",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'un vaisseau spatial")
  * )
  */
     public function destroy(string $id)

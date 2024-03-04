@@ -10,7 +10,7 @@ class FilmsController extends Controller
 /**
  * @OA\Get(
  *     path="/api/films",
- *     summary="Get a list of users",
+ *     summary="Afficher la liste des films",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -49,12 +49,12 @@ class FilmsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="Afficher un film à l'aide de son id",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Afficher un film à l'aide de son id",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -91,7 +91,7 @@ class FilmsController extends Controller
 /**
  * @OA\Post(
  *     path="/api/films",
- *     summary="Get a list of users",
+ *     summary="Créé un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -114,7 +114,7 @@ class FilmsController extends Controller
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Modifier un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -138,7 +138,7 @@ class FilmsController extends Controller
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Supprimer un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")

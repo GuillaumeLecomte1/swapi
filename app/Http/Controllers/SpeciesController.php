@@ -14,7 +14,7 @@ class SpeciesController extends Controller
 /**
  * @OA\Get(
  *     path="/api/species",
- *     summary="Get a list of species",
+ *     summary="Afficher la liste des espèces",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des species")
@@ -58,7 +58,7 @@ class SpeciesController extends Controller
  *       type="integer"
  *       )
  *   ),
- *     summary="Get one species",
+ *     summary="Afficher une espèce à l'aide de son id",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne un species")
@@ -96,7 +96,7 @@ class SpeciesController extends Controller
 /**
  * @OA\Post(
  *     path="/api/species",
- *     summary="Get a list of users",
+ *     summary="Crée une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -114,12 +114,12 @@ class SpeciesController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID de l'espèce",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Modifie une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
@@ -138,12 +138,12 @@ class SpeciesController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID de l'espèce",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
- *     summary="Get a list of users",
+ *     summary="Supprimer une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
