@@ -16,6 +16,11 @@ class Planets extends Model
         return $this->belongsToMany(Films::class, 'film_planets', 'planet_id', 'film_id');
     }
 
+    public function residents()
+    {
+        return $this->hasMany(People::class, 'homeworld');
+    }
+
     public function getUrlAttribute()
     {
         return url("/planets/{$this->id}");

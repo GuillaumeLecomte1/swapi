@@ -123,7 +123,17 @@ class VehiclesController extends Controller
  */
     public function destroy(string $id)
     {
-        $vehicles = Vehicles::find($id);
-        $vehicles->delete();
+        $vehicle = Vehicles::find($id);
+
+        if (!$vehicle) {
+            return response()->json(['message' => 'Vehicule non trouvé'], 404);
+        }
+
+        $vehicle->films()->detach();
+        $vehicle->pilots()->detach();
+
+        $vehicle->delete();
+
+        return response()->json(['message' => 'Vehicule supprimé avec succès'], 200);
     }
 }

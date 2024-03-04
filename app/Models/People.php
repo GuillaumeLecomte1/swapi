@@ -20,7 +20,7 @@ class People extends Model
 
     public function homeworld()
     {
-        return $this->belongsTo(Planets::class, 'homeworld');
+        return $this->belongsTo(Planets::class, 'homeworld', 'id');    
     }
 
     // Relation avec la table species (many-to-many)

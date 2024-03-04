@@ -152,6 +152,16 @@ class SpeciesController extends Controller
     public function destroy(string $id)
     {
         $species = Species::find($id);
+
+        if (!$species) {
+            return response()->json(['message' => 'Espèce non trouvée'], 404);
+        }
+
+        $species->films()->detach();
+        $species->people()->detach();
+
         $species->delete();
+
+        return response()->json(['message' => 'Espèce supprimée avec succès'], 200);
     }
 }

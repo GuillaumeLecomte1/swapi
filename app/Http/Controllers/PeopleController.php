@@ -158,6 +158,18 @@ class PeopleController extends Controller
     public function destroy(string $id)
     {
         $people = People::find($id);
+
+        if (!$people) {
+            return response()->json(['message' => 'Personne non trouvée'], 404);
+        }
+
+        $people->films()->detach();
+        $people->species()->detach();
+        $people->starships()->detach();
+        $people->vehicles()->detach();
+
         $people->delete();
+
+        return response()->json(['message' => 'Personne supprimée avec succès'], 200);
     }
 }
