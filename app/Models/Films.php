@@ -23,7 +23,7 @@ class Films extends Model
 
     public function planets()
     {
-        return $this->belongsToMany(Planets::class, 'film_planets', 'planet_id', 'film_id');
+        return $this->belongsToMany(Planets::class, 'film_planets', 'film_id', 'planet_id');
     }
 
     public function species()

@@ -160,7 +160,17 @@ class StarshipsController extends Controller
  */
     public function destroy(string $id)
     {
-        $starships = Starships::find($id);
-        $starships->delete();
+        $starship = Starships::find($id);
+
+        if (!$starship) {
+            return response()->json(['message' => 'Vaisseau spatial non trouvé'], 404);
+        }
+
+        $starship->films()->detach();
+        $starship->pilots()->detach();
+
+        $starship->delete();
+
+        return response()->json(['message' => 'Vaisseau spatial supprimé avec succès'], 200);
     }
 }

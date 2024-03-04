@@ -18,7 +18,7 @@ class PlanetsController extends Controller
  */
     public function readAll()
     {
-        $planets = Planets::with(['films'])->get();
+        $planets = Planets::with(['films','residents'])->get();
 
         $transformedData = $planets->map(function ($planet) {
             return [
@@ -34,6 +34,7 @@ class PlanetsController extends Controller
                 'created' => $planet->created,
                 'edited' => $planet->edited,
                 'films' => $planet->films->pluck('url'),
+                'residents' => $planet->residents->pluck('url'),
                 'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
             ];
         });
@@ -145,6 +146,13 @@ class PlanetsController extends Controller
     public function destroy(string $id)
     {
         $planet = Planets::find($id);
+
+        if (!$planet) {
+            return response()->json(['message' => 'Planète non trouvée'], 404);
+        }
+
         $planet->delete();
+
+        return response()->json(['message' => 'Planète supprimée avec succès'], 200);
     }
 }
