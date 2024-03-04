@@ -19,12 +19,30 @@ class VehiclesController extends Controller
  */
     public function readAll()
     {
-        $vehicles = Vehicles::all();
-        foreach($vehicles as $vehicle){
-            $transport = Transports::find($vehicle["id_transport"]);
-            $vehicles['transport'] = $transport;
-        }
-        return response()->json($vehicles);
+        $vehicles = Vehicles::with(['films', 'pilots'])->get();
+
+        $transformedData = $vehicles->map(function ($vehicle) {
+            $transport = Transports::find($vehicle->id);
+            return [
+                'name' => $transport->name,
+                'model' => $vehicle->vehicle_class,
+                'manufacturer' => $transport->manufacturer,
+                'cost_in_credits' => $transport->cost_in_credits,
+                'length' => $transport->length,
+                'max_atmosphering_speed' => $transport->max_atmosphering_speed,
+                'crew' => $transport->crew,
+                'passengers' => $transport->passengers,
+                'cargo_capacity' => $transport->cargo_capacity,
+                'consumables' => $transport->consumables,
+                'created' => $transport->created,
+                'edited' => $transport->edited,
+                'films' => $vehicle->films->pluck('url'),
+                'pilots' => $vehicle->pilots->pluck('url'),
+                'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
+            ];
+        });
+
+        return response()->json(['vehicles' => $transformedData], 200);
     }
     
 /**
@@ -38,10 +56,31 @@ class VehiclesController extends Controller
  */
     public function read(string $id)
     {
-        $vehicles = Vehicles::find($id);
-        $transport = Transports::find($vehicles["id_transport"]);
-        $vehicles['transport'] = $transport;
-        return response()->json($vehicles);
+        $vehicle = Vehicles::with(['films', 'pilots'])->find($id);
+
+        if (!$vehicle) {
+            return response()->json(['message' => 'Véhicule non trouvé'], 404);
+        }
+        $transport = Transports::find($vehicle->id);
+        $transformedData = [
+            'name' => $transport->name,
+                'model' => $vehicle->vehicle_class,
+                'manufacturer' => $transport->manufacturer,
+                'cost_in_credits' => $transport->cost_in_credits,
+                'length' => $transport->length,
+                'max_atmosphering_speed' => $transport->max_atmosphering_speed,
+                'crew' => $transport->crew,
+                'passengers' => $transport->passengers,
+                'cargo_capacity' => $transport->cargo_capacity,
+                'consumables' => $transport->consumables,
+                'created' => $transport->created,
+                'edited' => $transport->edited,
+                'films' => $vehicle->films->pluck('url'),
+                'pilots' => $vehicle->pilots->pluck('url'),
+                'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
+        ];
+
+        return response()->json(['vehicle' => $transformedData], 200);
     }
 
 /**

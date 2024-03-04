@@ -13,10 +13,15 @@ class Starships extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Films::class, 'film_starships');
+        return $this->belongsToMany(Films::class, 'film_starships', 'starship_id', 'film_id');
     }
 
     public function pilots()
     {
-        return $this->belongsToMany(People::class, 'people_starships');
-    }}
+        return $this->belongsToMany(People::class, 'people_starships', 'starship_id', 'people_id');
+    }
+    public function getUrlAttribute()
+    {
+        return url("/starships/{$this->id}");
+    }
+}

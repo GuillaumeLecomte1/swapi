@@ -4,10 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\People;
-use App\Models\Planet;
-use App\Models\Starship;
-use App\Models\Vehicle;
 
 class Films extends Model
 {
@@ -27,7 +23,12 @@ class Films extends Model
 
     public function planets()
     {
-        return $this->belongsToMany(Planets::class, 'film_planets', 'film_id', 'planet_id');
+        return $this->belongsToMany(Planets::class, 'film_planets', 'planet_id', 'film_id');
+    }
+
+    public function species()
+    {
+        return $this->belongsToMany(Species::class, 'film_species', 'film_id', 'species_id');
     }
 
     public function starships()
@@ -38,11 +39,6 @@ class Films extends Model
     public function vehicles()
     {
         return $this->belongsToMany(Vehicles::class, 'film_vehicles', 'film_id', 'vehicle_id');
-    }
-
-    public function species()
-    {
-        return $this->belongsToMany(Species::class, 'film_species', 'film_id', 'species_id');
     }
 
     public function getUrlAttribute()

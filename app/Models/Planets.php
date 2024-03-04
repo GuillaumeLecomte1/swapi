@@ -13,10 +13,11 @@ class Planets extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Films::class, 'film_planets');
+        return $this->belongsToMany(Films::class, 'film_planets', 'planet_id', 'film_id');
     }
 
-    public function people()
+    public function getUrlAttribute()
     {
-        return $this->belongsToMany(People::class, 'people_planets');
-    }}
+        return url("/planets/{$this->id}");
+    }
+}

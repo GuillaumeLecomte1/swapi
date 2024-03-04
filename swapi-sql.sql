@@ -133,7 +133,7 @@ INSERT INTO `people` (`id`, `edited`, `name`, `created`, `gender`, `skin_color`,
 (83, '2014-12-20 21:17:50', 'Tion Medon', '2014-12-20 20:35:04', 'male', 'grey', 'none', 206, 'black', 80, 12, 'unknown');
 
 
-INSERT INTO `people_species` (`species_id`, `people_id`) VALUES
+INSERT INTO `people_species` (`people_id`, `species_id`) VALUES
 (1, 1), (4, 1), (5, 1), (6, 1), (7, 1), (9, 1), (10, 1), (11, 1), (12, 1), (14, 1),
 (18, 1), (19, 1), (21, 1), (22, 1), (25, 1), (26, 1), (28, 1), (29, 1), (32, 1), (34, 1),
 (35, 1), (39, 1), (42, 1), (43, 1), (51, 1), (60, 1), (61, 1), (62, 1), (66, 1), (67, 1),

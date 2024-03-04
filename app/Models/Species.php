@@ -13,10 +13,22 @@ class Species extends Model
 
     public function films()
     {
-        return $this->belongsToMany(Films::class, 'film_species');
+        return $this->belongsToMany(Films::class, 'film_species', 'species_id', 'film_id');
     }
 
     public function people()
     {
-        return $this->belongsToMany(People::class, 'people_species');
-    }}
+        return $this->belongsToMany(People::class, 'people_species','species_id', 'people_id');
+    }
+
+    public function homeworld()
+    {
+        return $this->belongsTo(Planets::class, 'homeworld');
+    }
+    public function getUrlAttribute()
+    {
+        return url("/species/{$this->id}");
+    }
+
+}
+

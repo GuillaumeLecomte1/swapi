@@ -42,8 +42,8 @@ return new class extends Migration
         // Table de liaison avec species
         Schema::create('people_species', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('people_id');
             $table->unsignedBigInteger('species_id');
+            $table->unsignedBigInteger('people_id');
             $table->timestamps();
 
             $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');

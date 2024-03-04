@@ -20,12 +20,32 @@ class StarshipsController extends Controller
  */
     public function readAll()
     {
-        $starships = Starships::all();
-        foreach($starships as $starship){
-            $transport = Transports::find($starship["id_transport"]);
-            $starship['transport'] = $transport;
-        }
-        return response()->json($starships);
+        $starships = Starships::with(['films', 'pilots'])->get();
+
+        $transformedData = $starships->map(function ($starship) {
+            $transport = Transports::find($starship->id);
+            return [
+                'name' => $transport->name,
+                'model' => $starship->starship_class,
+                'manufacturer' => $transport->manufacturer,
+                'cost_in_credits' => $transport->cost_in_credits,
+                'length' => $transport->length,
+                'crew' => $transport->crew,
+                'passengers' => $transport->passengers,
+                'cargo_capacity' => $transport->cargo_capacity,
+                'consumables' => $transport->consumables,
+                'hyperdrive_rating' => $starship->hyperdrive_rating,
+                'MGLT' => $starship->MGLT,
+                'max_atmosphering_speed' => $transport->max_atmosphering_speed,
+                'films' => $starship->films->pluck('url'),
+                'pilots' => $starship->pilots->pluck('url'),
+                'created' => $transport->created,
+                'edited' => $transport->edited,
+                'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
+            ];
+        });
+
+        return response()->json(['starships' => $transformedData], 200);
     }
     
 /**
@@ -48,10 +68,38 @@ class StarshipsController extends Controller
  */
     public function read(string $id)
     {
-        $starships = Starships::find($id);
-        $transport = Transports::find($starships["id_transport"]);
-        $starships['transport'] = $transport;
-        return response()->json($starships);
+        // $starships = Starships::find($id);
+        // $transport = Transports::find($starships["id_transport"]);
+        // $starships['transport'] = $transport;
+        // return response()->json($starships);
+        $starship = Starships::with(['films', 'pilots'])->find($id);
+
+        if (!$starship) {
+            return response()->json(['message' => 'Vaisseau spatial non trouvé'], 404);
+        }
+
+        $transport = Transports::find($starship->id);
+        $transformedData = [
+            'name' => $transport->name,
+                'model' => $starship->starship_class,
+                'manufacturer' => $transport->manufacturer,
+                'cost_in_credits' => $transport->cost_in_credits,
+                'length' => $transport->length,
+                'crew' => $transport->crew,
+                'passengers' => $transport->passengers,
+                'cargo_capacity' => $transport->cargo_capacity,
+                'consumables' => $transport->consumables,
+                'hyperdrive_rating' => $starship->hyperdrive_rating,
+                'MGLT' => $starship->MGLT,
+                'max_atmosphering_speed' => $transport->max_atmosphering_speed,
+                'films' => $starship->films->pluck('url'),
+                'pilots' => $starship->pilots->pluck('url'),
+                'created' => $transport->created,
+                'edited' => $transport->edited,
+                'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
+        ];
+        return response()->json(['starship' => $transformedData], 200);
+        
     }
 
 /**

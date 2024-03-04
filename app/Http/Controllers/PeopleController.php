@@ -17,8 +17,29 @@ class PeopleController extends Controller
  */
     public function readAll()
     {
-        $people = People::all();
-        return response()->json($people);
+        $people = People::with(['films', 'species', 'starships', 'vehicles'])->get();
+        $transformedData = $people->map(function ($item) {
+            return [
+                'name' => $item->name,
+                'birth_year' => $item->birth_year,
+                'eye_color' => $item->eye_color,
+                'gender' => $item->gender,
+                'hair_color' => $item->hair_color,
+                'height' => $item->height,
+                'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($item->homeworld),
+                'mass' => $item->mass,
+                'skin_color' => $item->skin_color,
+                'created' => $item->created,
+                'edited' => $item->edited,
+                'films' => $item->films->pluck('url'),
+                'species' => $item->species->pluck('url'),
+                'starships' => $item->starships->pluck('url'),
+                'vehicles' => $item->vehicles->pluck('url'),
+                'url' => 'http://127.0.0.1:8000/api/people/'. strval($item->id),
+            ];
+        });
+
+        return response()->json(['people' => $transformedData], 200);
     }
     
 /**
@@ -41,8 +62,32 @@ class PeopleController extends Controller
  */
     public function read(string $id)
     {
-        $people = People::find($id);
-        return response()->json($people);
+        $people = People::with(['films', 'species', 'starships', 'vehicles'])->get()->find($id);
+
+        if (!$people) {
+            return response()->json(['message' => 'Personne non trouvée'], 404);
+        }
+
+        $transformedData = [
+            'name' => $people->name,
+            'birth_year' => $people->birth_year,
+            'eye_color' => $people->eye_color,
+            'gender' => $people->gender,
+            'hair_color' => $people->hair_color,
+            'height' => $people->height,
+            'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($people->homeworld),
+            'mass' => $people->mass,
+            'skin_color' => $people->skin_color,
+            'created' => $people->created,
+            'edited' => $people->edited,
+            'films' => $people->films->pluck('url'),
+            'species' => $people->species->pluck('url'),
+            'starships' => $people->starships->pluck('url'),
+            'vehicles' => $people->vehicles->pluck('url'),
+            'url' => 'http://127.0.0.1:8000/api/people/'. strval($people->id),
+        ];
+
+        return response()->json(['people' => $transformedData], 200);
     }
 
 /**

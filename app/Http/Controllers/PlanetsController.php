@@ -18,8 +18,27 @@ class PlanetsController extends Controller
  */
     public function readAll()
     {
-        $planet = Planets::all();
-        return response()->json($planet);
+        $planets = Planets::with(['films'])->get();
+
+        $transformedData = $planets->map(function ($planet) {
+            return [
+                'name' => $planet->name,
+                'climate' => $planet->climate,
+                'terrain' => $planet->terrain,
+                'diameter' => $planet->diameter,
+                'gravity' => $planet->gravity,
+                'orbital_period' => $planet->orbital_period,
+                'rotation_period' => $planet->rotation_period,
+                'surface_water' => $planet->surface_water,
+                'population' => $planet->population,
+                'created' => $planet->created,
+                'edited' => $planet->edited,
+                'films' => $planet->films->pluck('url'),
+                'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
+            ];
+        });
+
+        return response()->json(['planets' => $transformedData], 200);
     }
     
 /**
@@ -42,8 +61,29 @@ class PlanetsController extends Controller
  */
     public function read(string $id)
     {
-        $planet = Planets::find($id);
-        return response()->json($planet);
+        $planet = Planets::with(['films'])->find($id);
+
+        if (!$planet) {
+            return response()->json(['message' => 'Planète non trouvée'], 404);
+        }
+
+        $transformedData = [
+            'name' => $planet->name,
+            'climate' => $planet->climate,
+            'terrain' => $planet->terrain,
+            'diameter' => $planet->diameter,
+            'gravity' => $planet->gravity,
+            'orbital_period' => $planet->orbital_period,
+            'rotation_period' => $planet->rotation_period,
+            'surface_water' => $planet->surface_water,
+            'population' => $planet->population,
+            'created' => $planet->created,
+            'edited' => $planet->edited,
+            'films' => $planet->films->pluck('url'),
+            'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
+        ];
+
+        return response()->json(['planet' => $transformedData], 200);
     }
 
 /**
