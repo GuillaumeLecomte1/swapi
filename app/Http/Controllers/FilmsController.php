@@ -57,7 +57,7 @@ class FilmsController extends Controller
  *     summary="Afficher un film à l'aide de son id",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Retourne le film ciblé par l'id passé en paramètre")
  * )
  */
     public function read(string $id)
@@ -94,7 +94,7 @@ class FilmsController extends Controller
  *     summary="Créé un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Création d'un film")
  * )
  */
     public function create(Request $request)
@@ -117,7 +117,7 @@ class FilmsController extends Controller
  *     summary="Modifier un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Modification d'un film")
  * )
  */
     public function update(Request $request, string $id)
@@ -141,7 +141,7 @@ class FilmsController extends Controller
  *     summary="Supprimer un film",
  *     tags={"Films"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'un film")
  * )
  */
     public function destroy(string $id)

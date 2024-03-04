@@ -91,7 +91,7 @@ class PlanetsController extends Controller
  * @OA\Post(
  *     path="/api/planets",
  *     summary="Crée une planète",
- *     tags={"Films"},
+ *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Retourne la liste des films")
  * )

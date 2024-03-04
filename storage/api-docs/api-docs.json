@@ -32,7 +32,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Création d'un film"
                     }
                 }
             }
@@ -60,7 +60,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Retourne le film ciblé par l'id passé en paramètre"
                     }
                 }
             },
@@ -86,7 +86,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Modification d'un film"
                     }
                 }
             },
@@ -112,7 +112,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'un film"
                     }
                 }
             }
@@ -295,7 +295,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Modification d'un personnage"
                     }
                 }
             },
@@ -321,7 +321,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Création d'un personnage"
                     }
                 }
             },
@@ -347,7 +347,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des films"
+                        "description": "Suppression d'un personnage"
                     }
                 }
             }
@@ -370,7 +370,7 @@
             },
             "post": {
                 "tags": [
-                    "Films"
+                    "Planets"
                 ],
                 "summary": "Crée une planète",
                 "operationId": "75f1b7ea6dd8c85b6371a7afc3296198",
@@ -727,12 +727,23 @@
                 ],
                 "summary": "Afficher un véhicule à l'aide de son id",
                 "operationId": "4e2ce1b7fef40fd560c9b21476270e92",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Affiche le véhicule ciblé par l'id passé en paramètre"
+                        "description": "Retourne le véhicule ciblé par l'id passé en paramètre"
                     }
                 }
             },
@@ -742,6 +753,17 @@
                 ],
                 "summary": "Modifier un véhicule à l'aide de son id",
                 "operationId": "9d3adda0a00b56831ea9d06e550a0aa3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -757,6 +779,17 @@
                 ],
                 "summary": "Supprimer un véhicule à l'aide de son id",
                 "operationId": "95ddbe5ff32596e76c82bab67c10267a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "400": {
                         "description": "Invalid request"

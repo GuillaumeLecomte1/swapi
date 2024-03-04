@@ -48,10 +48,19 @@ class VehiclesController extends Controller
 /**
  * @OA\Get(
  *     path="/api/vehicles/{id}",
+ *    @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du Vehicule",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Afficher un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Affiche le véhicule ciblé par l'id passé en paramètre")
+ *     @OA\Response(response="200", description="Retourne le véhicule ciblé par l'id passé en paramètre")
  * )
  */
     public function read(string $id)
@@ -100,6 +109,15 @@ class VehiclesController extends Controller
 /**
  * @OA\Put(
  *     path="/api/vehicles/{id}",
+ *    @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du Vehicule",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Modifier un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -115,6 +133,15 @@ class VehiclesController extends Controller
 /**
  * @OA\Delete(
  *     path="/api/vehicles/{id}",
+ *    @OA\Parameter(
+ *       name="id",
+ *       in="path",
+ *       required=true,
+ *       description="ID du Vehicule",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
  *     summary="Supprimer un véhicule à l'aide de son id",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),

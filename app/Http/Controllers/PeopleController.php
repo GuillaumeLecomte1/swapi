@@ -105,7 +105,7 @@ class PeopleController extends Controller
  *     summary="Création d'un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Création d'un personnage")
  * )
  */
     public function create(Request $request)
@@ -128,7 +128,7 @@ class PeopleController extends Controller
  *     summary="Modifier un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Modification d'un personnage")
  * )
  */
     public function update(Request $request, string $id)
@@ -152,7 +152,7 @@ class PeopleController extends Controller
  *     summary="Suppression d'un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'un personnage")
  * )
  */
     public function destroy(string $id)
