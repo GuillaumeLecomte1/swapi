@@ -39,8 +39,8 @@ class StarshipsController extends Controller
                 'max_atmosphering_speed' => $transport->max_atmosphering_speed,
                 'films' => $starship->films->pluck('url'),
                 'pilots' => $starship->pilots->pluck('url'),
-                'created' => $transport->created,
-                'edited' => $transport->edited,
+                'created_at' => $transport->created_at,
+                'updated_at' => $transport->updated_at,
                 'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
             ];
         });
@@ -78,7 +78,7 @@ class StarshipsController extends Controller
             return response()->json(['message' => 'Vaisseau spatial non trouvé'], 404);
         }
 
-        $transport = Transports::find($starship->id);
+        $transport = Transports::find($starship->id_transport);
         $transformedData = [
             'name' => $transport->name,
                 'model' => $starship->starship_class,
@@ -94,8 +94,8 @@ class StarshipsController extends Controller
                 'max_atmosphering_speed' => $transport->max_atmosphering_speed,
                 'films' => $starship->films->pluck('url'),
                 'pilots' => $starship->pilots->pluck('url'),
-                'created' => $transport->created,
-                'edited' => $transport->edited,
+                'created_at' => $transport->created_at,
+                'updated_at' => $transport->updated_at,
                 'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
         ];
         return response()->json(['starship' => $transformedData], 200);
@@ -107,13 +107,58 @@ class StarshipsController extends Controller
  *     path="/api/starships",
  *     summary="Crée un vaisseau spatial",
  *     tags={"Starships"},
+ *  @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="model", type="string", format="text", example="TEST"),
+ *                 @OA\Property(property="starship_class", type="string", format="text", example="TEST"),
+ *                 @OA\Property(property="hyperdrive_rating", type="integer", format="int32", example=2),
+ *                 @OA\Property(property="MGLT", type="integer", format="int32", example=2), 
+ *                 @OA\Property(property="id_transport", type="integer", format="int32", example=2),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *             )
+ *         )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="création d'un vaisseau spatial")
  * )
  */
     public function create(Request $request)
     {
-        $starships = Starships::create($request->all());
+        $request->validate([
+            'model' => 'required|string|max:255',
+            'starship_class' => 'required|string|max:255',
+            'hyperdrive_rating' => 'required|numeric',
+            'MGLT' => 'required|numeric',
+            'id_transport' => 'required|exists:transports,id',
+        ]);
+
+        $transport = Transports::find($request->input('id_transport'));
+
+        if (!$transport) {
+            return response()->json(['message' => 'Transport non trouvé'], 404);
+        }
+
+        $starship = Starships::create([
+            'model' => $request->input('model'),
+            'starship_class' => $request->input('starship_class'),
+            'hyperdrive_rating' => $request->input('hyperdrive_rating'),
+            'MGLT' => $request->input('MGLT'),
+            'id_transport' => $request->input('id_transport'),
+        ]);
+
+        if ($request->has('films')) {
+            $starship->films()->attach($request->input('films'));
+        }
+
+        return response()->json(['message' => 'Starship créé avec succès', 'starship' => $starship], 201);
     }
 
 /**

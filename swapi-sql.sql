@@ -1,4 +1,4 @@
-INSERT INTO `planets` (`id`, `edited`, `climate`, `surface_water`, `name`, `diameter`, `rotation_period`, `created`, `terrain`, `gravity`, `orbital_period`, `population`) VALUES
+INSERT INTO `planets` (`id`, `updated_at`, `climate`, `surface_water`, `name`, `diameter`, `rotation_period`, `created_at`, `terrain`, `gravity`, `orbital_period`, `population`) VALUES
 (1, '2014-12-20 20:58:18', 'arid', '1', 'Tatooine', '10465', '23', '2014-12-09 13:50:50', 'desert', '1 standard', '304', '200000'),
 (2, '2014-12-20 20:58:18', 'temperate', '40', 'Alderaan', '12500', '24', '2014-12-10 11:35:48', 'grasslands, mountains', '1 standard', '364', '2000000000'),
 (3, '2014-12-20 20:58:18', 'temperate, tropical', '8', 'Yavin IV', '10200', '24', '2014-12-10 11:37:19', 'jungle, rainforests', '1 standard', '4818', '1000'),
@@ -61,7 +61,7 @@ INSERT INTO `planets` (`id`, `edited`, `climate`, `surface_water`, `name`, `diam
 (60, '2014-12-20 20:58:19', 'unknown', 'unknown', 'Umbara', NULL, NULL, '2014-12-20 20:18:36', 'unknown', 'unknown', NULL, NULL);
 
 
-INSERT INTO `people` (`id`, `edited`, `name`, `created`, `gender`, `skin_color`, `hair_color`, `height`, `eye_color`, `mass`, `homeworld`, `birth_year`) VALUES
+INSERT INTO `people` (`id`, `updated_at`, `name`, `created_at`, `gender`, `skin_color`, `hair_color`, `height`, `eye_color`, `mass`, `homeworld`, `birth_year`) VALUES
 (1, '2014-12-20 21:17:57', 'Luke Skywalker', '2014-12-09 13:50:52', 'male', 'fair', 'blond', 171, 'blue', 77, 1, '19BBY'),
 (2, '2014-12-20 21:17:50', 'C-3PO', '2014-12-10 15:10:51', 'n/a', 'gold', 'n/a', 167, 'yellow', 75, 1, '112BBY'),
 (3, '2014-12-20 21:17:50', 'R2-D2', '2014-12-10 15:11:50', 'n/a', 'white, blue', 'n/a', 96, 'red', 32, 8, '33BBY'),
@@ -146,7 +146,7 @@ INSERT INTO `people_species` (`people_id`, `species_id`) VALUES
 
 
 
-INSERT INTO `species` (`edited`, `classification`, `name`, `designation`, `created`, `eye_colors`, `skin_colors`, `language`, `hair_colors`, `homeworld`, `average_lifespan`, `average_height`, `id`) VALUES
+INSERT INTO `species` (`updated_at`, `classification`, `name`, `designation`, `created_at`, `eye_colors`, `skin_colors`, `language`, `hair_colors`, `homeworld`, `average_lifespan`, `average_height`, `id`) VALUES
 ('2014-12-20 21:36:42', 'mammal', 'Human', 'sentient', '2014-12-10 13:52:12', 'brown, blue, green, hazel, grey, amber', 'caucasian, black, asian, hispanic', 'Galactic Basic', 'blonde, brown, black, red', 9, '120', '180', 1),
 ('2014-12-20 21:36:42', 'artificial', 'Droid', 'sentient', '2014-12-10 15:16:16', 'n/a', 'n/a', 'n/a', 'indefinite', NULL, '','',2),
 ('2014-12-20 21:36:42', 'mammal', 'Wookie', 'sentient', '2014-12-10 16:44:31', 'blue, green, yellow, brown, golden, red', 'gray', 'Shyriiwook', 'black, brown', 14, '400', '210', 3),
@@ -186,7 +186,7 @@ INSERT INTO `species` (`edited`, `classification`, `name`, `designation`, `creat
 ('2014-12-20 21:36:42', 'mammal', 'Pauan', 'sentient', '2014-12-20 20:35:07', 'black', 'grey', 'Utapese', 'none', 12, '700', '190', 37);
 
 
-INSERT INTO `transports` (`id`, `edited`, `consumables`, `name`, `created`, `cargo_capacity`, `passengers`, `max_atmosphering_speed`, `crew`, `length`, `model`, `cost_in_credits`, `manufacturer`) VALUES
+INSERT INTO `transports` (`id`, `updated_at`, `consumables`, `name`, `created_at`, `cargo_capacity`, `passengers`, `max_atmosphering_speed`, `crew`, `length`, `model`, `cost_in_credits`, `manufacturer`) VALUES
 (2, '2014-12-20T21:23:49.867Z', '1 year', 'CR90 corvette', '2014-12-10T14:20:33.369Z', '3000000', '600', '950', '30-165', '150', 'CR90 corvette', '3500000', 'Corellian Engineering Corporation'),
 (3, '2014-12-20T21:23:49.870Z', '2 years', 'Star Destroyer', '2014-12-10T15:08:19.848Z', '36000000', 'n/a', '975', '47,060', '1,600', 'Imperial I-class Star Destroyer', '150000000', 'Kuat Drive Yards'),
 (4, '2014-12-20T21:30:21.661Z', '2 months', 'Sand Crawler', '2014-12-10T15:36:25.724Z', '50000', '30', '30', '46', '36.8 ', 'Digger Crawler', '150000', 'Corellia Mining Corporation'),
@@ -385,7 +385,7 @@ INSERT INTO `people_starships` (`people_id`, `starship_id`) VALUES
 (10, 75);
 
 
-INSERT INTO `films` (`id`, `edited`, `producer`, `title`, `created`, `episode_id`, `director`, `release_date`, `opening_crawl`)
+INSERT INTO `films` (`id`, `updated_at`, `producer`, `title`, `created_at`, `episode_id`, `director`, `release_date`, `opening_crawl`)
 VALUES
 (1, '2014-12-20T19:49:45.256Z', 'Gary Kurtz, Rick McCallum', 'A New Hope', '2014-12-10T14:23:31.880Z', 4, 'George Lucas', '1977-05-25', 'It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secret\r\nplans to the Empire\'s\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with enough power\r\r\n    to destroy an entire planet.\r\n\r\nPursued by the Empire\'s\r\nsinister agents, Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save her\r\npeople and restore\r\nfreedom to the galaxy....'),
 (2, '2014-12-15T13:07:53.386Z', 'Gary Kurtz, Rick McCallum', 'The Empire Strikes Back', '2014-12-12T11:26:24.656Z', 5, 'Irvin Kershner', '1980-05-17', 'It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space....'),

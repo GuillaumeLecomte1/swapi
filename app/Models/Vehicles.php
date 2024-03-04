@@ -9,6 +9,7 @@ class Vehicles extends Model
 {
     protected $fillable = [
         'vehicle_class',
+        'id_transport',
     ];
 
     public function films()

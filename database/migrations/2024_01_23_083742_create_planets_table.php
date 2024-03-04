@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('planets', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('edited');
             $table->string("climate");
             $table->string("surface_water");
             $table->string("name");
             $table->string("diameter");
             $table->string("rotation_period");
-            $table->timestamp('created');
             $table->string("terrain");
             $table->string("gravity");
             $table->string("orbital_period");
             $table->string("population");
+            $table->timestamps();
         });
     }
 

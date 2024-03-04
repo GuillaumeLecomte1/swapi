@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Species extends Model
 {
     protected $fillable = [
-        'name', 'classification', 'designation', 'average_height', 'average_lifespan', 'eye_colors', 'hair_colors', 'skin_colors', 'language',
+        'name', 'classification', 'designation', 'average_height', 'average_lifespan', 'eye_colors', 'hair_colors', 'skin_colors', 'language', 'homeworld',
     ];
 
     public function films()

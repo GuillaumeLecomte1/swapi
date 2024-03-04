@@ -29,9 +29,9 @@ class SpeciesController extends Controller
                 'average_height' => $item->average_height,
                 'average_lifespan' => $item->average_lifespan,
                 'classification' => $item->classification,
-                'created' => $item->created,
+                'created_at' => $item->created_at,
                 'designation' => $item->designation,
-                'edited' => $item->edited,
+                'updated_at' => $item->updated_at,
                 'eye_colors' => $item->eye_colors,
                 'hair_colors' => $item->hair_colors,
                 'homeworld' =>'http://127.0.0.1:8000/api/planets/'. strval($item->homeworld),
@@ -77,9 +77,9 @@ class SpeciesController extends Controller
             'average_height' => $species->average_height,
             'average_lifespan' => $species->average_lifespan,
             'classification' => $species->classification,
-            'created' => $species->created,
+            'created_at' => $species->created_at,
             'designation' => $species->designation,
-            'edited' => $species->edited,
+            'updated_at' => $species->updated_at,
             'eye_colors' => $species->eye_colors,
             'hair_colors' => $species->hair_colors,
             'homeworld' => 'http://127.0.0.1:8000/api/planets/' . strval($species->homeworld),
@@ -98,14 +98,79 @@ class SpeciesController extends Controller
  *     path="/api/species",
  *     summary="Crée une espèce",
  *     tags={"Species"},
+ * @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", format="text", example="TEST"),
+ *                 @OA\Property(property="average_height", type="integer", format="int32", example="2.1"),
+ *                 @OA\Property(property="average_lifespan", type="integer", format="int32", example="400"),
+ *                 @OA\Property(property="classification", type="string", format="text", example="Mammal"),
+ *                 @OA\Property(property="designation", type="string", format="text", example="Sentient"),
+ *                 @OA\Property(property="eye_colors", type="string", format="text", example="Blue, Brown"),
+ *                 @OA\Property(property="hair_colors", type="string", format="text", example="Brown, Black"),
+ *                 @OA\Property(property="homeworld", type="integer", format="int32", example="1"),
+ *                 @OA\Property(property="language", type="string", format="text", example="Shyriiwook"),
+ *                 @OA\Property(property="skin_colors", type="string", format="text", example="gray"),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="people",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ), 
+ *             )
+ *         )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Création d'une espèce avec succès")
  * )
  */
     public function create(Request $request)
     {
-        $species = Species::create($request->all());
-    }
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'average_height' => 'required|numeric',
+            'average_lifespan' => 'required|numeric',
+            'classification' => 'required|string|max:255',
+            'designation' => 'required|string|max:255',
+            'eye_colors' => 'string|max:255',
+            'hair_colors' => 'string|max:255',
+            'homeworld' => 'required|exists:planets,id', 
+            'language' => 'string|max:255',
+            'skin_colors' => 'string|max:255',
+            'people' => 'array', 
+            'films' => 'array',  
+        ]);
+
+        $species = Species::create([
+            'name' => $request->input('name'),
+            'average_height' => $request->input('average_height'),
+            'average_lifespan' => $request->input('average_lifespan'),
+            'classification' => $request->input('classification'),
+            'designation' => $request->input('designation'),
+            'eye_colors' => $request->input('eye_colors'),
+            'hair_colors' => $request->input('hair_colors'),
+            'homeworld' => $request->input('homeworld'),
+            'language' => $request->input('language'),
+            'skin_colors' => $request->input('skin_colors'),
+        ]);
+
+        if ($request->has('people')) {
+            $species->people()->attach($request->input('people'));
+        }
+
+        if ($request->has('films')) {
+            $species->films()->attach($request->input('films'));
+        }
+
+        return response()->json(['message' => 'Espèce créée avec succès', 'species' => $species], 201);    }
 
 /**
  * @OA\Put(

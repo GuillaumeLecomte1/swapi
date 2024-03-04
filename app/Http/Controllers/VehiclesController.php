@@ -34,8 +34,8 @@ class VehiclesController extends Controller
                 'passengers' => $transport->passengers,
                 'cargo_capacity' => $transport->cargo_capacity,
                 'consumables' => $transport->consumables,
-                'created' => $transport->created,
-                'edited' => $transport->edited,
+                'created_at' => $transport->created_at,
+                'updated_at' => $transport->updated_at,
                 'films' => $vehicle->films->pluck('url'),
                 'pilots' => $vehicle->pilots->pluck('url'),
                 'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
@@ -70,9 +70,9 @@ class VehiclesController extends Controller
         if (!$vehicle) {
             return response()->json(['message' => 'Véhicule non trouvé'], 404);
         }
-        $transport = Transports::find($vehicle->id);
+        $transport = Transports::find($vehicle->id_transport);
         $transformedData = [
-            'name' => $transport->name,
+                'name' => $transport->name,
                 'model' => $vehicle->vehicle_class,
                 'manufacturer' => $transport->manufacturer,
                 'cost_in_credits' => $transport->cost_in_credits,
@@ -82,8 +82,8 @@ class VehiclesController extends Controller
                 'passengers' => $transport->passengers,
                 'cargo_capacity' => $transport->cargo_capacity,
                 'consumables' => $transport->consumables,
-                'created' => $transport->created,
-                'edited' => $transport->edited,
+                'created_at' => $transport->created_at,
+                'updated_at' => $transport->updated_at,
                 'films' => $vehicle->films->pluck('url'),
                 'pilots' => $vehicle->pilots->pluck('url'),
                 'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
@@ -102,10 +102,8 @@ class VehiclesController extends Controller
  *         @OA\MediaType(
  *             mediaType="application/json",
  *             @OA\Schema(
- *                 @OA\Property(property="name", type="string", format="text", example="Speeder Bike"),
- *                 @OA\Property(property="cargo_capacity", type="integer", format="int32", example=5),
- *                 @OA\Property(property="consumables", type="string", format="text", example="1 day"),
- *                 @OA\Property(property="transport_id", type="integer", format="int32", example=1),
+ *                 @OA\Property(property="vehicle_class", type="string", format="text", example="TEST"),
+ *                 @OA\Property(property="id_transport", type="integer", format="int32", example=2),
  *                 @OA\Property(
  *                     property="films",
  *                     type="array",
@@ -113,7 +111,7 @@ class VehiclesController extends Controller
  *                     example={1, 2}
  *                 ),
  *                 @OA\Property(
- *                     property="people",
+ *                     property="pilots",
  *                     type="array",
  *                     @OA\Items(type="integer", format="int32"),
  *                     example={1, 2}
@@ -128,33 +126,29 @@ class VehiclesController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'cargo_capacity' => 'required|numeric',
-            'consumables' => 'required|string',
-            'transport_id' => 'required|exists:transports,id',
+            'vehicle_class' => 'required|string|max:191',
+            'id_transport' => 'required|exists:transports,id',
         ]);
-
-        $transport = Transports::find($request->input('transport_id'));
+        $transport = Transports::find($request->input('id_transport'));
 
         if (!$transport) {
             return response()->json(['message' => 'Transport non trouvé'], 404);
         }
 
-        $vehicle = $transport->vehicles()->create([
-            'name' => $request->input('name'),
-            'cargo_capacity' => $request->input('cargo_capacity'),
-            'consumables' => $request->input('consumables'),
+        $vehicle = Vehicles::create([
+            'vehicle_class' => $request->input('vehicle_class'),
+            'id_transport' => $request->input('id_transport'),
         ]);
 
         if ($request->has('films')) {
             $vehicle->films()->attach($request->input('films'));
         }
 
-        if ($request->has('people')) {
-            $vehicle->people()->attach($request->input('people'));
+        if ($request->has('pilots')) {
+            $vehicle->pilots()->attach($request->input('pilots'));
         }
 
-        return response()->json(['message' => 'Véhicule créé avec succès', 'vehicle' => $vehicle], 201);    
+        return response()->json(['message' => 'Véhicule créé avec succès', 'vehicle' => $vehicle], 201);
     }
 
 /**

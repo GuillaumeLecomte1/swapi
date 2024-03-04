@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('species', function (Blueprint $table) {
-            $table->timestamp('edited');
             $table->string("classification");
             $table->string("name");
             $table->string("designation");
-            $table->timestamp('created');
             $table->string("eye_colors");
             $table->string("skin_colors");
             $table->string("language");
@@ -25,6 +23,7 @@ return new class extends Migration
             $table->string("average_lifespan");
             $table->string("average_height");
             $table->id();
+            $table->timestamps();
 
             $table->foreign('homeworld')->references('id')->on('planets')->onDelete('cascade');
        

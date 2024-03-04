@@ -31,8 +31,8 @@ class PlanetsController extends Controller
                 'rotation_period' => $planet->rotation_period,
                 'surface_water' => $planet->surface_water,
                 'population' => $planet->population,
-                'created' => $planet->created,
-                'edited' => $planet->edited,
+                'created_at' => $planet->created_at,
+                'updated_at' => $planet->updated_at,
                 'films' => $planet->films->pluck('url'),
                 'residents' => $planet->residents->pluck('url'),
                 'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
@@ -78,8 +78,8 @@ class PlanetsController extends Controller
             'rotation_period' => $planet->rotation_period,
             'surface_water' => $planet->surface_water,
             'population' => $planet->population,
-            'created' => $planet->created,
-            'edited' => $planet->edited,
+            'created_at' => $planet->created_at,
+            'updated_at' => $planet->updated_at,
             'films' => $planet->films->pluck('url'),
             'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
         ];
@@ -92,14 +92,65 @@ class PlanetsController extends Controller
  *     path="/api/planets",
  *     summary="Crée une planète",
  *     tags={"Planets"},
+ * @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", format="text", example="TEST"),
+ *                 @OA\Property(property="diameter", type="integer", format="int32", example="10465"),
+ *                 @OA\Property(property="rotation_period", type="integer", format="int32", example="23"),
+ *                 @OA\Property(property="orbital_period", type="integer", format="int32", example="304"),
+ *                 @OA\Property(property="gravity", type="string", format="text", example="1"),
+ *                 @OA\Property(property="population", type="integer", format="int32", example="12000"),
+ *                 @OA\Property(property="climate", type="string", format="text", example="Afrid"),
+ *                 @OA\Property(property="terrain", type="string", format="text", example="Desert"),
+ *                 @OA\Property(property="surface_water", type="integer", format="int32", example="1"),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ), 
+ *             )
+ *         )
+ *     ), 
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Création d'une planète")
  * )
  */
     public function create(Request $request)
     {
-        $planet = Planets::create($request->all());
-    }
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'diameter' => 'required|numeric',
+            'rotation_period' => 'required|numeric',
+            'orbital_period' => 'required|numeric',
+            'gravity' => 'required|string|max:255',
+            'population' => 'required|numeric',
+            'climate' => 'required|string|max:255',
+            'terrain' => 'required|string|max:255',
+            'surface_water' => 'required|numeric',
+            'films' => 'array',      
+        ]);
+
+        $planet = Planets::create([
+            'name' => $request->input('name'),
+            'diameter' => $request->input('diameter'),
+            'rotation_period' => $request->input('rotation_period'),
+            'orbital_period' => $request->input('orbital_period'),
+            'gravity' => $request->input('gravity'),
+            'population' => $request->input('population'),
+            'climate' => $request->input('climate'),
+            'terrain' => $request->input('terrain'),
+            'surface_water' => $request->input('surface_water'),
+       ]);
+
+        if ($request->has('films')) {
+            $planet->films()->attach($request->input('films'));
+        }
+
+        return response()->json(['message' => 'Planète créée avec succès', 'planet' => $planet], 201);    }
 
 /**
  * @OA\Put(

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Starships extends Model
 {
     protected $fillable = [
-        'model', 'starship_class','hyperdrive_rating', 'MGLT',
+        'model', 'starship_class','hyperdrive_rating', 'MGLT',"id_transport",
     ];
 
     public function films()

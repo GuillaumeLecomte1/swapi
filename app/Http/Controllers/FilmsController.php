@@ -28,8 +28,8 @@ class FilmsController extends Controller
                 'director' => $film->director,
                 'producer' => $film->producer,
                 'release_date' => $film->release_date,
-                'created' => $film->created,
-                'edited' => $film->edited,
+                'created_at' => $film->created_at,
+                'updated_at' => $film->update_at,
                 'characters' => $film->characters->pluck('url'),
                 'planets' => $film->planets->pluck('url'),
                 'species' => $film->species->pluck('url'),
@@ -75,8 +75,8 @@ class FilmsController extends Controller
             'director' => $film->director,
             'producer' => $film->producer,
             'release_date' => $film->release_date,
-            'created' => $film->created,
-            'edited' => $film->edited,
+            'created_at' => $film->created_at,
+            'updated_at' => $film->updated_at,
             'characters' => $film->characters->pluck('url'),
             'planets' => $film->planets->pluck('url'),
             'species' => $film->species->pluck('url'),
@@ -93,14 +93,103 @@ class FilmsController extends Controller
  *     path="/api/films",
  *     summary="Créé un film",
  *     tags={"Films"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="title", type="string", example="A New Hope"),
+ *                 @OA\Property(property="episode_id", type="integer", example=4),
+ *                 @OA\Property(property="opening_crawl", type="string", example="It is a period of civil war..."),
+ *                 @OA\Property(property="director", type="string", example="George Lucas"),
+ *                 @OA\Property(property="producer", type="string", example="Gary Kurtz, Rick McCallum"),
+ *                 @OA\Property(property="release_date", type="string", format="date", example="1977-05-25"),
+ *                 @OA\Property(
+ *                     property="planets",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="uri"),
+ *                     example={1}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="characters",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="uri"),
+ *                     example={1}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="starships",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="uri"),
+ *                     example={2}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="vehicles",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="uri"),
+ *                     example={4}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="species",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="uri"),
+ *                     example={1}
+ *                 ),
+ *             )
+ *         )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Création d'un film")
  * )
  */
     public function create(Request $request)
     {
-        $films = Films::create($request->all());
-    }
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'episode_id' => 'required|integer',
+            'opening_crawl' => 'required|string',
+            'director' => 'required|string|max:255',
+            'producer' => 'required|string|max:255',
+            'release_date' => 'required|date',
+            'planets' => 'array',      
+            'characters' => 'array',   
+            'starships' => 'array',    
+            'vehicles' => 'array',     
+            'species' => 'array',      
+        ]);
+    
+        $film = Films::create([
+            'title' => $request->input('title'),
+            'episode_id' => $request->input('episode_id'),
+            'opening_crawl' => $request->input('opening_crawl'),
+            'director' => $request->input('director'),
+            'producer' => $request->input('producer'),
+            'release_date' => $request->input('release_date'),
+        ]);
+    
+        if ($request->has('planets')) {
+            $film->planets()->attach($request->input('planets'));
+        }
+    
+        if ($request->has('characters')) {
+            $film->characters()->attach($request->input('characters'));
+        }
+    
+        if ($request->has('starships')) {
+            $film->starships()->attach($request->input('starships'));
+        }
+    
+        if ($request->has('vehicles')) {
+            $film->vehicles()->attach($request->input('vehicles'));
+        }
+    
+        if ($request->has('species')) {
+            $film->species()->attach($request->input('species'));
+        }
+    
+        return response()->json([
+            'message' => 'Film created successfully',
+            'film' => $film,
+        ], 201);    }
 
 /**
  * @OA\Put(

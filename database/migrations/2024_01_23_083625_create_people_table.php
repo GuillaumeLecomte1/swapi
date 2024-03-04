@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("edited");
             $table->string("name");
-            $table->timestamp("created");
             $table->string("gender");
             $table->string("skin_color");
             $table->string("hair_color");
@@ -24,6 +22,7 @@ return new class extends Migration
             $table->integer("mass");
             $table->unsignedBigInteger('homeworld');
             $table->string("birth_year");
+            $table->timestamps();
 
             $table->foreign('homeworld')->references('id')->on('planets')->onDelete('cascade');
         });

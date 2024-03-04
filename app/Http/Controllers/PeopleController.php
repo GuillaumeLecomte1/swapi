@@ -29,8 +29,8 @@ class PeopleController extends Controller
                 'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($item->homeworld),
                 'mass' => $item->mass,
                 'skin_color' => $item->skin_color,
-                'created' => $item->created,
-                'edited' => $item->edited,
+                'created_at' => $item->created_at,
+                'update_at' => $item->updated_at,
                 'films' => $item->films->pluck('url'),
                 'species' => $item->species->pluck('url'),
                 'starships' => $item->starships->pluck('url'),
@@ -78,8 +78,8 @@ class PeopleController extends Controller
             'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($people->homeworld),
             'mass' => $people->mass,
             'skin_color' => $people->skin_color,
-            'created' => $people->created,
-            'edited' => $people->edited,
+            'created_at' => $people->created_at,
+            'updated_at' => $people->updated_at,
             'films' => $people->films->pluck('url'),
             'species' => $people->species->pluck('url'),
             'starships' => $people->starships->pluck('url'),
@@ -92,26 +92,96 @@ class PeopleController extends Controller
 
 /**
  * @OA\Post(
- *     path="/api/people/{id}",
- * @OA\Parameter(
- *       name="id",
- *       in="path",
- *       required=true,
- *       description="ID du personnage",
- *       @OA\Schema(
- *       type="integer"
- *       )
- *   ),
+ *     path="/api/people",
  *     summary="Création d'un personnage",
  *     tags={"People"},
+ * @OA\RequestBody(
+ *          required=true,
+ *          @OA\MediaType(
+ *              mediaType="application/json",
+ *              @OA\Schema(
+ *                  @OA\Property(property="birth_year", type="string", format="text", example="19 BBY"),
+ *                  @OA\Property(property="eye_color", type="string", format="text", example="Blue"),
+ *                  @OA\Property(property="gender", type="string", format="text", example="Male"),
+ *                  @OA\Property(property="hair_color", type="string", format="text", example="Blond"),
+ *                  @OA\Property(property="height", type="string", format="text", example="172"),
+ *                  @OA\Property(property="homeworld", type="string", format="uri", example="1"),
+ *                  @OA\Property(property="mass", type="string", format="text", example="77"),
+ *                  @OA\Property(property="name", type="string", format="text", example="TEST"),
+ *                  @OA\Property(property="skin_color", type="string", format="text", example="Fair"),
+ *                  @OA\Property(
+ *                      property="species",
+ *                      type="array",
+ *                      @OA\Items(type="string", format="uri"),
+ *                      example={1}
+ *                  ),
+ *                  @OA\Property(
+ *                      property="starships",
+ *                      type="array",
+ *                      @OA\Items(type="string", format="uri"),
+ *                      example={12}
+ *                  ),
+ *                  @OA\Property(
+ *                      property="vehicles",
+ *                      type="array",
+ *                      @OA\Items(type="string", format="uri"),
+ *                      example={14}
+ *                  ),
+ *                  @OA\Property(
+ *                      property="films",
+ *                      type="array",
+ *                      @OA\Items(type="string", format="uri"),
+ *                      example={1,2}
+ *                  ),
+ *              )
+ *          )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
  *     @OA\Response(response="200", description="Création d'un personnage")
  * )
  */
     public function create(Request $request)
     {
-        $people = People::create($request->all());
-    }
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'birth_year' => 'required|string|max:255',
+            'eye_color' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'hair_color' => 'required|string|max:255',
+            'height' => 'required|numeric',
+            'mass' => 'required|numeric',
+            'skin_color' => 'required|string|max:255',
+            'homeworld' => 'required|exists:planets,id', 
+            'species' => 'array',  
+            'starships' => 'array',
+            'vehicles' => 'array', 
+        ]);
+
+        $people = People::create([
+            'name' => $request->input('name'),
+            'birth_year' => $request->input('birth_year'),
+            'eye_color' => $request->input('eye_color'),
+            'gender' => $request->input('gender'),
+            'hair_color' => $request->input('hair_color'),
+            'height' => $request->input('height'),
+            'mass' => $request->input('mass'),
+            'skin_color' => $request->input('skin_color'),
+            'homeworld' => $request->input('homeworld'),
+        ]);
+
+        if ($request->has('species')) {
+            $people->species()->attach($request->input('species'));
+        }
+
+        if ($request->has('starships')) {
+            $people->starships()->attach($request->input('starships'));
+        }
+
+        if ($request->has('vehicles')) {
+            $people->vehicles()->attach($request->input('vehicles'));
+        }
+
+        return response()->json(['message' => 'Personne créée avec succès', 'people' => $people], 201);    }
 
 /**
  * @OA\Put(
