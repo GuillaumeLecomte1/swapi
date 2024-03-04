@@ -61,7 +61,7 @@ class SpeciesController extends Controller
  *     summary="Afficher une espèce à l'aide de son id",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne un species")
+ *     @OA\Response(response="200", description="Afficher une espèce à l'aide de son id")
  * )
  */
     public function read(string $id)
@@ -99,7 +99,7 @@ class SpeciesController extends Controller
  *     summary="Crée une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Création d'une espèce avec succès")
  * )
  */
     public function create(Request $request)
@@ -122,7 +122,7 @@ class SpeciesController extends Controller
  *     summary="Modifie une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Modification d'une espèce avec succès")
  * )
  */
     public function update(Request $request, string $id)
@@ -146,7 +146,7 @@ class SpeciesController extends Controller
  *     summary="Supprimer une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Retourne la liste des films")
+ *     @OA\Response(response="200", description="Suppression d'une espèce avec succès")
  * )
  */
     public function destroy(string $id)

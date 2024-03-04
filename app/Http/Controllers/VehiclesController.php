@@ -97,8 +97,32 @@ class VehiclesController extends Controller
  *     path="/api/vehicles",
  *     summary="Créer un véhicule",
  *     tags={"Vehicle"},
+ *      @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", format="text", example="Speeder Bike"),
+ *                 @OA\Property(property="cargo_capacity", type="integer", format="int32", example=5),
+ *                 @OA\Property(property="consumables", type="string", format="text", example="1 day"),
+ *                 @OA\Property(property="transport_id", type="integer", format="int32", example=1),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="people",
+ *                     type="array",
+ *                     @OA\Items(type="integer", format="int32"),
+ *                     example={1, 2}
+ *                 ),
+ *             )
+ *         )
+ *     ),
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Création d'un véhicule")
+ *     @OA\Response(response="200", description="Création d'un véhicule réussie")
  * )
  */
     public function create(Request $request)
