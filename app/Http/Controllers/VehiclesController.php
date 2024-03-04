@@ -103,7 +103,34 @@ class VehiclesController extends Controller
  */
     public function create(Request $request)
     {
-        $vehicles = Vehicles::create($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'cargo_capacity' => 'required|numeric',
+            'consumables' => 'required|string',
+            'transport_id' => 'required|exists:transports,id',
+        ]);
+
+        $transport = Transports::find($request->input('transport_id'));
+
+        if (!$transport) {
+            return response()->json(['message' => 'Transport non trouvé'], 404);
+        }
+
+        $vehicle = $transport->vehicles()->create([
+            'name' => $request->input('name'),
+            'cargo_capacity' => $request->input('cargo_capacity'),
+            'consumables' => $request->input('consumables'),
+        ]);
+
+        if ($request->has('films')) {
+            $vehicle->films()->attach($request->input('films'));
+        }
+
+        if ($request->has('people')) {
+            $vehicle->people()->attach($request->input('people'));
+        }
+
+        return response()->json(['message' => 'Véhicule créé avec succès', 'vehicle' => $vehicle], 201);    
     }
 
 /**
