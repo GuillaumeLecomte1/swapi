@@ -29,7 +29,7 @@ Explorer les différents endpoints disponibles.
 Voir les détails des requêtes et des réponses attendues.
 Tester directement les requêtes à partir de l'interface.
 
-## Learning Laravel
+## Apprentissage de Laravel
 
 Laravel dispose de la documentation la plus étendue [documentation](https://laravel.com/docs) et la plus approfondie et d'une bibliothèque de tutoriels vidéo de tous les cadres d'application web modernes, ce qui rend le démarrage avec le cadre très facile.
 
