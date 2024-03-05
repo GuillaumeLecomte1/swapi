@@ -11,6 +11,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "curl": "^0.1.4"
+        "curl": "^0.1.4",
+        "openssl": "^2.0.0"
     }
 }

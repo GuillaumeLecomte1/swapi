@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "APIs SWAPI",
-        "version": "1.0.0", 
-        "description": "Cet API Rest permet de gérer les données de l'API SWAPI (Star Wars API). Il permet de gérer les films, les personnages, les planètes, les espèces, les vaisseaux spatiaux et les véhicules. Il permet également de gérer les utilisateurs (inscription, connexion, déconnexion)."
+        "description": "Cet API Rest permet de gérer les données de l'API SWAPI (Star Wars API). Il permet de gérer les films, les personnages, les planètes, les espèces, les vaisseaux spatiaux et les véhicules. Il permet également de gérer les utilisateurs (inscription, connexion, déconnexion).",
+        "version": "1.0.0"
     },
     "paths": {
         "/api/films": {
@@ -308,7 +308,7 @@
                                     "mail": {
                                         "type": "string",
                                         "format": "email",
-                                        "example": "test1@test.com"
+                                        "example": "user@example.com"
                                     },
                                     "password": {
                                         "type": "string",
@@ -1595,17 +1595,6 @@
                         "description": "Suppression d'un véhicule avec succès"
                     }
                 }
-            }
-        }
-    },
-    "components": {
-        "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "name": "bearerAuth",
-                "in": "header",
-                "bearerFormat": "JWT",
-                "scheme": "bearer"
             }
         }
     }
