@@ -43,7 +43,7 @@ class Films extends Model
 
     public function getUrlAttribute()
     {
-        return url("/films/{$this->id}");
+        return url("/api/films/{$this->id}");
     }
 
 }

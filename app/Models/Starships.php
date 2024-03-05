@@ -22,6 +22,6 @@ class Starships extends Model
     }
     public function getUrlAttribute()
     {
-        return url("/starships/{$this->id}");
+        return url("/api/starships/{$this->id}");
     }
 }

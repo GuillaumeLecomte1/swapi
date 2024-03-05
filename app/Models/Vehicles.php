@@ -23,6 +23,6 @@ class Vehicles extends Model
     }
     public function getUrlAttribute()
     {
-        return url("/vehicles/{$this->id}");
+        return url("/api/vehicles/{$this->id}");
     }
 }
