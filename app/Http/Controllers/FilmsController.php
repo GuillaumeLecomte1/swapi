@@ -187,7 +187,7 @@ public function create(Request $request)
     }
 
     return response()->json([
-        'message' => 'Film created successfully',
+        'message' => 'Film créée avec succès',
         'film' => $film,
     ], 201);   
 }
