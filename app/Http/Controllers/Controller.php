@@ -1,14 +1,4 @@
 <?php
-/**
-
-@OA\Info(
-version="1.0",
-title="Example API",
-description="Example info",
-@OA\Contact(name="Swagger API Team")
-)
-*/
-
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,15 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
  * @OA\Info(
  *    title="APIs SWAPI",
  *    version="1.0.0",
+ *    description="Cet API Rest permet de gérer les données de l'API SWAPI (Star Wars API). Il permet de gérer les films, les personnages, les planètes, les espèces, les vaisseaux spatiaux et les véhicules. Il permet également de gérer les utilisateurs (inscription, connexion, déconnexion).",
  * ),
- *   @OA\SecurityScheme(
- *       securityScheme="bearerAuth",
- *       in="header",
- *       name="bearerAuth",
- *       type="http",
- *       scheme="bearer",
- *       bearerFormat="JWT",
- *    ),
  */
 class Controller extends BaseController
 {

@@ -26,3 +26,7 @@ use OpenApi\Annotations as OA;
 */
 
 Route::redirect('/', 'api/documentation');
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
