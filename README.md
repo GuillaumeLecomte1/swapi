@@ -42,8 +42,11 @@ Le modèle de maturité de Richardson décrit les étapes pour créer une API RE
 
 ## Comment Nous Avons Respecté le Modèle de Richardson
   Niveau 0 : L'API SWAPI, étant une source de données unique, sert de point d'entrée unique (URI) pour toutes les interactions, conformément au niveau 0 du modèle.
+
   Niveau 1 : Nous avons structuré l'API autour des ressources de Star Wars (par exemple, personnages, planètes), chaque ressource ayant son propre URI.
+
   Niveau 2 : Nous utilisons les méthodes HTTP (GET, POST, DELETE) pour définir les opérations sur les ressources, en adéquation avec les principes REST.
+  
   Niveau 3 : Enfin, nous avons implémenté HATEOAS pour permettre une navigation auto-découverte de l'API, guidant les utilisateurs vers des ressources connexes à travers des hyperliens.
 
 ## Contribution
