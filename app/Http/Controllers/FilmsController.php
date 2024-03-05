@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Films;
+use Exception;
 
 class FilmsController extends Controller
 {
@@ -65,6 +66,7 @@ class FilmsController extends Controller
         $film = Films::with(['characters', 'planets', 'species', 'starships', 'vehicles'])->find($id);
 
         if (!$film) {
+            throw new Exception('Film non trouvé');
             return response()->json(['message' => 'Film non trouvé'], 404);
         }
 

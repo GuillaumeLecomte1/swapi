@@ -51,3 +51,38 @@ Le modèle de maturité de Richardson décrit les étapes pour créer une API RE
 
 ## Contribution
 Votre contribution est la bienvenue ! Veuillez suivre les directives de contribution pour soumettre des bugs, des demandes de fonctionnalités ou des pull requests.
+
+## Enjeux et Facteurs
+Les tests de montée en charge sont cruciaux pour identifier les points faibles d'une application avant qu'elle ne soit mise en production. Les principaux enjeux incluent la garantie de la qualité de service (QoS), la prévention des interruptions de service, et la maximisation de la satisfaction des utilisateurs finaux. Les facteurs à considérer lors de la conception de ces tests incluent le volume de l'utilisateur, la complexité des transactions, la bande passante réseau, la capacité de stockage et le traitement parallèle.
+
+## Types de Tests de Montée en Charge
+  Test de performance : Évalue la rapidité, la réactivité et la stabilité d'un système sous une charge spécifique.
+
+  Test de résistance : Détermine la capacité d'un système à gérer la charge au-delà des niveaux normaux d'opération, souvent jusqu'à ce qu'il échoue.
+
+  Test d'endurance : Vérifie la fiabilité et la performance d'un système sur de longues périodes sous une charge attendue.
+
+  Test de pointe : Simule des augmentations soudaines de charge, souvent à des moments spécifiques, pour voir comment le système gère les pics d'activité.
+
+## Outils de Monitoring Open-Source et Cloud
+Les outils de monitoring sont essentiels pour observer le comportement d'une application en temps réel et collecter des données sur sa performance et sa santé.
+
+  Prometheus : Un système de monitoring et d'alerte open-source qui collecte et stocke ses métriques sous forme de séries temporelles.
+
+  Grafana : Permet de visualiser les données de monitoring. Souvent utilisé avec Prometheus, mais compatible avec plusieurs sources de données.
+
+  Nagios : Un outil open-source populaire pour la surveillance des systèmes, des réseaux et des infrastructures.
+
+  AWS CloudWatch : Service de monitoring dans le cloud offert par Amazon Web Services, permettant la collecte et le tracking des métriques, la collecte et le monitoring des logs, et la mise en place d'alertes.
+
+## Outils de Test de Charge Open-Source et Cloud
+Ces outils permettent de créer des scénarios de test simulant différents niveaux de charge sur une application ou un système pour évaluer sa performance.
+
+  JMeter : Un outil open-source développé par Apache pour tester la charge et mesurer la performance des services web.
+
+  Gatling : Un outil de test de charge pour les applications web, avec une conception axée sur la performance.
+
+  Locust : Un outil open-source écrit en Python, permettant de définir le comportement des utilisateurs et de simuler des millions d'utilisateurs simultanés.
+
+  BlazeMeter : Un service cloud qui offre une plate-forme de test de performance compatible avec JMeter, Gatling, Selenium, entre autres, permettant d'exécuter des tests de charge à grande échelle.
+  

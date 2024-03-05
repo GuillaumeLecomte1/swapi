@@ -30,3 +30,6 @@ Route::redirect('/', 'api/documentation');
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
 });
+Route::get('/debug-sentry-testError', function () {
+    throw new Exception('My second Sentry error :) !');
+});
