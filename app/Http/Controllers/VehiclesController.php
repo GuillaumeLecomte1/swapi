@@ -158,11 +158,30 @@ class VehiclesController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du Vehicule",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="vehicle_class", type="string", example="wheeled"),
+ *                 @OA\Property(property="cargo_capacity", type="string", example="50000"),
+ *                 @OA\Property(property="consumables", type="string", example="2 months"),
+ *                 @OA\Property(property="cost_in_credits", type="string", example="150000"),
+ *                 @OA\Property(property="crew", type="string", example="46"),
+ *                 @OA\Property(property="length", type="string", example="36.8"),
+ *                 @OA\Property(property="manufacturer", type="string", example="Corellia Mining Corporation"),
+ *                 @OA\Property(property="max_atmosphering_speed", type="string", example="30"),
+ *                 @OA\Property(property="model", type="string", example="Digger Crawler"),
+ *                 @OA\Property(property="name", type="string", example="Sand Crawler"),
+ *                 @OA\Property(property="passengers", type="string", example="30"),
+ *             )
+ *         )
+ *     ),
  *     summary="Modifier un vehicule",
  *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -171,8 +190,37 @@ class VehiclesController extends Controller
  */
     public function update(Request $request, string $id)
     {
-        $vehicles = Vehicles::find($id);
-        $vehicles->update($request->all());
+        $request->validate([
+            'vehicle_class' => 'string',
+            'cargo_capacity' => 'string',
+            'consumables' => 'string',
+            'cost_in_credits' => 'string',
+            'crew' => 'string',
+            'length' => 'string',
+            'manufacturer' => 'string',
+            'max_atmosphering_speed' => 'string',
+            'model' => 'string',
+            'name' => 'string',
+            'passengers' => 'string',
+        ]);
+    
+    
+        $vehicle = Vehicles::find($id);
+    
+        if (!$vehicle) {
+            return response()->json(['message' => 'Vehicle non trouvé'], 404);
+        }
+    
+        $transport = Transports::find($vehicle->id_transport);
+
+        if (!$transport) {
+            return response()->json(['message' => 'Problème de liaison avec son Transport'], 404);
+        }
+
+        $vehicle->update($request->all());
+        $transport->update($request->all());
+    
+        return response()->json(['message' => 'Vehicle mis à jour', 'data' => $vehicle]);
     }
 
 /**

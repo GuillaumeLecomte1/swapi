@@ -1305,6 +1305,66 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Death Star"
+                                    },
+                                    "MGLT": {
+                                        "type": "string",
+                                        "example": "10 MGLT"
+                                    },
+                                    "cargo_capacity": {
+                                        "type": "string",
+                                        "example": "1000000000000"
+                                    },
+                                    "consumables": {
+                                        "type": "string",
+                                        "example": "3 years"
+                                    },
+                                    "cost_in_credits": {
+                                        "type": "string",
+                                        "example": "1000000000000"
+                                    },
+                                    "crew": {
+                                        "type": "string",
+                                        "example": "342953"
+                                    },
+                                    "length": {
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "manufacturer": {
+                                        "type": "string",
+                                        "example": "Imperial Department of Military Research, Sienar Fleet Systems"
+                                    },
+                                    "max_atmosphering_speed": {
+                                        "type": "string",
+                                        "example": "n/a"
+                                    },
+                                    "model": {
+                                        "type": "string",
+                                        "example": "DS-1 Orbital Battle Station"
+                                    },
+                                    "passengers": {
+                                        "type": "string",
+                                        "example": "843342"
+                                    },
+                                    "starship_class": {
+                                        "type": "string",
+                                        "example": "Deep Space Mobile Battlestation"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -1461,6 +1521,62 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "vehicle_class": {
+                                        "type": "string",
+                                        "example": "wheeled"
+                                    },
+                                    "cargo_capacity": {
+                                        "type": "string",
+                                        "example": "50000"
+                                    },
+                                    "consumables": {
+                                        "type": "string",
+                                        "example": "2 months"
+                                    },
+                                    "cost_in_credits": {
+                                        "type": "string",
+                                        "example": "150000"
+                                    },
+                                    "crew": {
+                                        "type": "string",
+                                        "example": "46"
+                                    },
+                                    "length": {
+                                        "type": "string",
+                                        "example": "36.8"
+                                    },
+                                    "manufacturer": {
+                                        "type": "string",
+                                        "example": "Corellia Mining Corporation"
+                                    },
+                                    "max_atmosphering_speed": {
+                                        "type": "string",
+                                        "example": "30"
+                                    },
+                                    "model": {
+                                        "type": "string",
+                                        "example": "Digger Crawler"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Sand Crawler"
+                                    },
+                                    "passengers": {
+                                        "type": "string",
+                                        "example": "30"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"

@@ -168,11 +168,31 @@ class StarshipsController extends Controller
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du film",
+ *       description="ID du Vaisseau Spatial",
  *       @OA\Schema(
  *       type="integer"
  *       )
  *   ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", example="Death Star"),
+ *                 @OA\Property(property="MGLT", type="string", example="10 MGLT"),
+ *                 @OA\Property(property="cargo_capacity", type="string", example="1000000000000"),
+ *                 @OA\Property(property="consumables", type="string", example="3 years"),
+ *                 @OA\Property(property="cost_in_credits", type="string", example="1000000000000"),
+ *                 @OA\Property(property="crew", type="string", example="342953"),
+ *                 @OA\Property(property="length", type="string", example="120000"),
+ *                 @OA\Property(property="manufacturer", type="string", example="Imperial Department of Military Research, Sienar Fleet Systems"),
+ *                 @OA\Property(property="max_atmosphering_speed", type="string", example="n/a"),
+ *                 @OA\Property(property="model", type="string", example="DS-1 Orbital Battle Station"),
+ *                 @OA\Property(property="passengers", type="string", example="843342"),
+ *                 @OA\Property(property="starship_class", type="string", example="Deep Space Mobile Battlestation"),
+ *             )
+ *         )
+ *     ),
  *     summary="Modifier un vaisseau spatial",
  *     tags={"Starships"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -181,8 +201,37 @@ class StarshipsController extends Controller
  */
     public function update(Request $request, string $id)
     {
-        $starships = Starships::find($id);
-        $starships->update($request->all());
+        $request->validate([
+            'name' => 'required|string',
+            'MGLT' => 'required|string',
+            'cargo_capacity' => 'required|string',
+            'consumables' => 'required|string',
+            'cost_in_credits' => 'required|string',
+            'crew' => 'string',
+            'length' => 'required|string',
+            'manufacturer' => 'required|string',
+            'max_atmosphering_speed' => 'required|string',
+            'model' => 'required|string',
+            'passengers' => 'required|string',
+            'starship_class' => 'required|string',
+        ]);
+    
+        $starship = Starships::find($id);
+    
+        if (!$starship) {
+            return response()->json(['message' => 'Starship non trouvé'], 404);
+        }
+    
+        $transport = Transports::find($starship->id_transport);
+
+        if (!$transport) {
+            return response()->json(['message' => 'Problème de liaison avec son Transport'], 404);
+        }
+
+        $starship->update($request->all());
+        $transport->update($request->all());
+    
+        return response()->json(['message' => 'Starship mis à jour', 'data' => $starship]);
     }
 
 /**
