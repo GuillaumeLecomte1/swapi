@@ -1,0 +1,1612 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "APIs SWAPI",
+        "version": "1.0.0", 
+        "description": "Cet API Rest permet de gérer les données de l'API SWAPI (Star Wars API). Il permet de gérer les films, les personnages, les planètes, les espèces, les vaisseaux spatiaux et les véhicules. Il permet également de gérer les utilisateurs (inscription, connexion, déconnexion)."
+    },
+    "paths": {
+        "/api/films": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Afficher la liste des films",
+                "operationId": "868c81d9ba6dfd7ef6c2b31502fae834",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Créé un film",
+                "operationId": "92bea0b4038986c2ee2a4b185f912af3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "A New Hope"
+                                    },
+                                    "episode_id": {
+                                        "type": "integer",
+                                        "example": 4
+                                    },
+                                    "opening_crawl": {
+                                        "type": "string",
+                                        "example": "It is a period of civil war..."
+                                    },
+                                    "director": {
+                                        "type": "string",
+                                        "example": "George Lucas"
+                                    },
+                                    "producer": {
+                                        "type": "string",
+                                        "example": "Gary Kurtz, Rick McCallum"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1977-05-25"
+                                    },
+                                    "planets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "characters": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            2
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            4
+                                        ]
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Création d'un film"
+                    }
+                }
+            }
+        },
+        "/api/films/{id}": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Afficher un film à l'aide de son id",
+                "operationId": "a4df4f825f139541ff446b2eaabf793d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Afficher un film à l'aide de son id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Modifier un film",
+                "operationId": "e10f6be5a3c1dd6d923fadad783d5ac1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "A New Hope"
+                                    },
+                                    "episode_id": {
+                                        "type": "integer",
+                                        "example": 4
+                                    },
+                                    "opening_crawl": {
+                                        "type": "string",
+                                        "example": "It is a period of civil war..."
+                                    },
+                                    "director": {
+                                        "type": "string",
+                                        "example": "George Lucas"
+                                    },
+                                    "producer": {
+                                        "type": "string",
+                                        "example": "Gary Kurtz, Rick McCallum"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1977-05-25"
+                                    },
+                                    "planets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "characters": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            2
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            4
+                                        ]
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Supprimer un film",
+                "operationId": "771c10e4bc6b04dc625ec4fef05b4ab0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des films"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "connecte un utilisateur",
+                "operationId": "c5e838284c7f343f0e5e5fd589161c96",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "test1@test.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Invalid credentials"
+                    },
+                    "200": {
+                        "description": "Se connecter à l'API"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "déconnecte un utilisateur",
+                "operationId": "399284ae5e84627c95a691127018a412",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Se déconnecter à l'API"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "créer un utilisateur",
+                "operationId": "a39949df013c1eb78ff8bd8f481d408a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "test"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "créer un compte utiliseur à l'API"
+                    }
+                }
+            }
+        },
+        "/api/people": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Afficher la liste des personnages",
+                "operationId": "9c4a4198e78ac76a924cb30187046a1c",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des personnages"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Création d'un personnage",
+                "operationId": "b81ee5672d4638c3ba86bd3d8ff4a60b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "birth_year": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "19 BBY"
+                                    },
+                                    "eye_color": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Blue"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Male"
+                                    },
+                                    "hair_color": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Blond"
+                                    },
+                                    "height": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "172"
+                                    },
+                                    "homeworld": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "example": "1"
+                                    },
+                                    "mass": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "77"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "skin_color": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Fair"
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            12
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            14
+                                        ]
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "uri"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Création d'un personnage"
+                    }
+                }
+            }
+        },
+        "/api/people/{id}": {
+            "get": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Afficher un personnage à l'aide de son id",
+                "operationId": "91a4a00c86a8fb033932abdc59c601c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du personnage",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne le personnage ciblé par l'id passé en paramètre"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Modifier un personnage",
+                "operationId": "b70c32b8efd74cd5427c2722fa878796",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du personnage",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Test"
+                                    },
+                                    "birth_year": {
+                                        "type": "string",
+                                        "example": "19 BBY"
+                                    },
+                                    "eye_color": {
+                                        "type": "string",
+                                        "example": "Blue"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "Male"
+                                    },
+                                    "hair_color": {
+                                        "type": "string",
+                                        "example": "Blond"
+                                    },
+                                    "height": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 172
+                                    },
+                                    "homeworld": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "1"
+                                    },
+                                    "mass": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 77
+                                    },
+                                    "skin_color": {
+                                        "type": "string",
+                                        "example": "Fair"
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            12
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            14
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Modification d'un personnage"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "People"
+                ],
+                "summary": "Suppression d'un personnage",
+                "operationId": "2ccbbf08d5e8c0a60a6abdb71e73a7a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du personnage",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Suppression d'un personnage"
+                    }
+                }
+            }
+        },
+        "/api/planets": {
+            "get": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Afficher la listes des planètes",
+                "operationId": "24f72d72b9702ebaa8e3637d42c8b8f1",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des planètes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Crée une planète",
+                "operationId": "75f1b7ea6dd8c85b6371a7afc3296198",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "diameter": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "10465"
+                                    },
+                                    "rotation_period": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "23"
+                                    },
+                                    "orbital_period": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "304"
+                                    },
+                                    "gravity": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "1"
+                                    },
+                                    "population": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "12000"
+                                    },
+                                    "climate": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Afrid"
+                                    },
+                                    "terrain": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Desert"
+                                    },
+                                    "surface_water": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "1"
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Création d'une planète"
+                    }
+                }
+            }
+        },
+        "/api/planets/{id}": {
+            "get": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Afficher une planète à l'aide de son id",
+                "operationId": "4954c4dfd1547e0b42d7d4dd2618093e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la planète",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la planète ciblée par l'id passé en paramètre"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Modifie une planète",
+                "operationId": "9d014d8e5773db1c11fb1ca00af01b65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la planète",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "TEST"
+                                    },
+                                    "diameter": {
+                                        "type": "string",
+                                        "example": "12000"
+                                    },
+                                    "rotation_period": {
+                                        "type": "string",
+                                        "example": "24"
+                                    },
+                                    "orbital_period": {
+                                        "type": "string",
+                                        "example": "365"
+                                    },
+                                    "gravity": {
+                                        "type": "string",
+                                        "example": "1.5"
+                                    },
+                                    "population": {
+                                        "type": "string",
+                                        "example": "500000000"
+                                    },
+                                    "climate": {
+                                        "type": "string",
+                                        "example": "Temperate"
+                                    },
+                                    "terrain": {
+                                        "type": "string",
+                                        "example": "Forest"
+                                    },
+                                    "surface_water": {
+                                        "type": "string",
+                                        "example": "25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Modification d'une planète"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Planets"
+                ],
+                "summary": "Supprimer une planète",
+                "operationId": "5b1ac95d2e5db95291fd132ee5eb9d88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la planète",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Suppression d'une planète"
+                    }
+                }
+            }
+        },
+        "/api/species": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Afficher la liste des espèces",
+                "operationId": "33bc13e65a1f56579f5a6b06cc8590a9",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des species"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Crée une espèce",
+                "operationId": "9b236b196cd5f3b0968eeef5b10aa02e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "average_height": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "2.1"
+                                    },
+                                    "average_lifespan": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "400"
+                                    },
+                                    "classification": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Mammal"
+                                    },
+                                    "designation": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Sentient"
+                                    },
+                                    "eye_colors": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Blue, Brown"
+                                    },
+                                    "hair_colors": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Brown, Black"
+                                    },
+                                    "homeworld": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": "1"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Shyriiwook"
+                                    },
+                                    "skin_colors": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "gray"
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "people": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Création d'une espèce avec succès"
+                    }
+                }
+            }
+        },
+        "/api/species/{id}": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Afficher une espèce à l'aide de son id",
+                "operationId": "53652ca2529b0426871b2555b3526d30",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'Espcèce",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Afficher une espèce à l'aide de son id"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Modifie une espèce",
+                "operationId": "bc40d711270f593a6f3ed50a201dcd4c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'espèce",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Wookie"
+                                    },
+                                    "average_height": {
+                                        "type": "string",
+                                        "example": "2.1"
+                                    },
+                                    "average_lifespan": {
+                                        "type": "string",
+                                        "example": "400"
+                                    },
+                                    "classification": {
+                                        "type": "string",
+                                        "example": "Mammal"
+                                    },
+                                    "designation": {
+                                        "type": "string",
+                                        "example": "Sentient"
+                                    },
+                                    "eye_colors": {
+                                        "type": "string",
+                                        "example": "blue, green, yellow, brown, golden, red"
+                                    },
+                                    "hair_colors": {
+                                        "type": "string",
+                                        "example": "black, brown"
+                                    },
+                                    "homeworld": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "Shyriiwook"
+                                    },
+                                    "skin_colors": {
+                                        "type": "string",
+                                        "example": "gray"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Modification d'une espèce avec succès"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Supprimer une espèce",
+                "operationId": "747f252c1c39ca2412455caedb25624e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'espèce",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Suppression d'une espèce avec succès"
+                    }
+                }
+            }
+        },
+        "/api/starships": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Afficher la liste des vaisseaux spatiaux",
+                "operationId": "0a0bde13bcf4e91a94d97408b50e15c4",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des starships"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Crée un vaisseau spatial",
+                "operationId": "4b8e606ab0ff253bce0652a25f68628e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "model": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "starship_class": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "hyperdrive_rating": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 2
+                                    },
+                                    "MGLT": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 2
+                                    },
+                                    "id_transport": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 2
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "création d'un vaisseau spatial"
+                    }
+                }
+            }
+        },
+        "/api/starships/{id}": {
+            "get": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Afficher un vaisseau spatial à l'aide de son id",
+                "operationId": "746c1efb4ceccedd68fb022f5440f209",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du vaissaux spatial",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne un starship"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Modifier un vaisseau spatial",
+                "operationId": "a738f207b45d76972796745bb1d36730",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vaisseau Spatial",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Death Star"
+                                    },
+                                    "MGLT": {
+                                        "type": "string",
+                                        "example": "10 MGLT"
+                                    },
+                                    "cargo_capacity": {
+                                        "type": "string",
+                                        "example": "1000000000000"
+                                    },
+                                    "consumables": {
+                                        "type": "string",
+                                        "example": "3 years"
+                                    },
+                                    "cost_in_credits": {
+                                        "type": "string",
+                                        "example": "1000000000000"
+                                    },
+                                    "crew": {
+                                        "type": "string",
+                                        "example": "342953"
+                                    },
+                                    "length": {
+                                        "type": "string",
+                                        "example": "120000"
+                                    },
+                                    "manufacturer": {
+                                        "type": "string",
+                                        "example": "Imperial Department of Military Research, Sienar Fleet Systems"
+                                    },
+                                    "max_atmosphering_speed": {
+                                        "type": "string",
+                                        "example": "n/a"
+                                    },
+                                    "model": {
+                                        "type": "string",
+                                        "example": "DS-1 Orbital Battle Station"
+                                    },
+                                    "passengers": {
+                                        "type": "string",
+                                        "example": "843342"
+                                    },
+                                    "starship_class": {
+                                        "type": "string",
+                                        "example": "Deep Space Mobile Battlestation"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "modification d'un vaisseau spatial"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Starships"
+                ],
+                "summary": "Supprimer un vaisseau spatial",
+                "operationId": "4e042eb72118e76a7121f00963e104c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du vaisseau spatial",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Suppression d'un vaisseau spatial"
+                    }
+                }
+            }
+        },
+        "/api/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Afficher la liste des véhicules",
+                "operationId": "b659f082b7df23b2049c6cffcb50cd3f",
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne la liste des véhicules avec succès"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Créer un véhicule",
+                "operationId": "fcbb14b08761a447e6e4df8f864409ff",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "vehicle_class": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "TEST"
+                                    },
+                                    "id_transport": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 2
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "pilots": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "format": "int32"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Création d'un véhicule réussie"
+                    }
+                }
+            }
+        },
+        "/api/vehicles/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Afficher un véhicule à l'aide de son id",
+                "operationId": "4e2ce1b7fef40fd560c9b21476270e92",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Retourne le véhicule ciblé par l'id passé en paramètre avec succès"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Modifier un vehicule",
+                "operationId": "9d3adda0a00b56831ea9d06e550a0aa3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "vehicle_class": {
+                                        "type": "string",
+                                        "example": "wheeled"
+                                    },
+                                    "cargo_capacity": {
+                                        "type": "string",
+                                        "example": "50000"
+                                    },
+                                    "consumables": {
+                                        "type": "string",
+                                        "example": "2 months"
+                                    },
+                                    "cost_in_credits": {
+                                        "type": "string",
+                                        "example": "150000"
+                                    },
+                                    "crew": {
+                                        "type": "string",
+                                        "example": "46"
+                                    },
+                                    "length": {
+                                        "type": "string",
+                                        "example": "36.8"
+                                    },
+                                    "manufacturer": {
+                                        "type": "string",
+                                        "example": "Corellia Mining Corporation"
+                                    },
+                                    "max_atmosphering_speed": {
+                                        "type": "string",
+                                        "example": "30"
+                                    },
+                                    "model": {
+                                        "type": "string",
+                                        "example": "Digger Crawler"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Sand Crawler"
+                                    },
+                                    "passengers": {
+                                        "type": "string",
+                                        "example": "30"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "modification d'un vehicule"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Supprimer un véhicule à l'aide de son id",
+                "operationId": "95ddbe5ff32596e76c82bab67c10267a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du Vehicule",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "200": {
+                        "description": "Suppression d'un véhicule avec succès"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

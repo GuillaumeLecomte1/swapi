@@ -36,6 +36,3 @@ Niveau 3 : Enfin, nous avons implémenté HATEOAS pour permettre une navigation 
 
 ## Contribution
 Votre contribution est la bienvenue ! Veuillez suivre les directives de contribution pour soumettre des bugs, des demandes de fonctionnalités ou des pull requests.
-
-## Licence
-Ce projet est sous licence [Insérer le type de licence]. Voir le fichier LICENSE pour plus de détails.

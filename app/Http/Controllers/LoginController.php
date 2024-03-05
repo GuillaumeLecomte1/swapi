@@ -20,12 +20,12 @@ class LoginController extends Controller
  *         @OA\MediaType(
  *             mediaType="application/json",
  *             @OA\Schema(
- *                 @OA\Property(property="mail", type="string", format="email", example="test1@test.com"),
+ *                 @OA\Property(property="mail", type="string", format="email", example="user@example.com"),
  *                 @OA\Property(property="password", type="string", format="password", example="test"),
  *             )
  *         )
  *     ),
- *     @OA\Response(response=400, description="Invalid request"),
+ *     @OA\Response(response=401, description="Invalid credentials"),
  *     @OA\Response(response="200", description="Se connecter à l'API")
  * )
  */
@@ -41,7 +41,7 @@ class LoginController extends Controller
                 'token' => $token
             ]);
 
-            $response->cookie('token', $token, 3600);
+            $response->cookie('token', $token, 36000);
 
             return $response;
         }
@@ -109,20 +109,5 @@ class LoginController extends Controller
             "status" => true,
             "message" => "User registered successfully"
         ]);
-    }
-
-
-/**
- * @OA\Get(
- *     path="/api/test/test",
- *     summary="Test du Auth jwt",
- *     tags={"User"},
- *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Auth jwt")
- * )
- */
-    public function testtest(Request $request)
-    {
-        return 'Test auth middleware done';
     }
 }
