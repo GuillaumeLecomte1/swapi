@@ -27,7 +27,7 @@ class Species extends Model
     }
     public function getUrlAttribute()
     {
-        return url("/species/{$this->id}");
+        return url("/api/species/{$this->id}");
     }
 
 }

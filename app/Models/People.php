@@ -48,6 +48,6 @@ class People extends Model
     }
     public function getUrlAttribute()
     {
-        return url("/peoples/{$this->id}");
+        return url("/api/peoples/{$this->id}");
     }
 }

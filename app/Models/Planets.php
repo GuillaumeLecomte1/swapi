@@ -23,6 +23,6 @@ class Planets extends Model
 
     public function getUrlAttribute()
     {
-        return url("/planets/{$this->id}");
+        return url("/api/planets/{$this->id}");
     }
 }
