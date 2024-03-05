@@ -38,7 +38,7 @@ class VehiclesController extends Controller
                 'updated_at' => $transport->updated_at,
                 'films' => $vehicle->films->pluck('url'),
                 'pilots' => $vehicle->pilots->pluck('url'),
-                'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
+                'url' =>env('API_URL') .'vehicles/'. strval($vehicle->id) ,
             ];
         });
 
@@ -86,7 +86,7 @@ class VehiclesController extends Controller
                 'updated_at' => $transport->updated_at,
                 'films' => $vehicle->films->pluck('url'),
                 'pilots' => $vehicle->pilots->pluck('url'),
-                'url' =>'http://127.0.0.1:8000/api/vehicles/'. strval($vehicle->id) ,
+                'url' =>env('API_URL') .'vehicles/'. strval($vehicle->id) ,
         ];
 
         return response()->json(['vehicle' => $transformedData], 200);

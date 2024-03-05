@@ -34,12 +34,12 @@ class SpeciesController extends Controller
                 'updated_at' => $item->updated_at,
                 'eye_colors' => $item->eye_colors,
                 'hair_colors' => $item->hair_colors,
-                'homeworld' =>'http://127.0.0.1:8000/api/planets/'. strval($item->homeworld),
+                'homeworld' =>env('API_URL') .'planets/'. strval($item->homeworld),
                 'language' => $item->language,
                 'people' => $item->people->pluck('url'),
                 'films' => $item->films->pluck('url'),
                 'skin_colors' => $item->skin_colors,
-                'url' =>'http://127.0.0.1:8000/api/species/'. strval($item->id) ,
+                'url' =>env('API_URL') .'species/'. strval($item->id) ,
             ];
         });
 
@@ -82,12 +82,12 @@ class SpeciesController extends Controller
             'updated_at' => $species->updated_at,
             'eye_colors' => $species->eye_colors,
             'hair_colors' => $species->hair_colors,
-            'homeworld' => 'http://127.0.0.1:8000/api/planets/' . strval($species->homeworld),
+            'homeworld' => env('API_URL') .'planets/' . strval($species->homeworld),
             'language' => $species->language,
             'people' => $species->people->pluck('url'),
             'films' => $species->films->pluck('url'),
             'skin_colors' => $species->skin_colors,
-            'url' => 'http://127.0.0.1:8000/api/species/' . strval($species->id),
+            'url' => env('API_URL') .'species/' . strval($species->id),
         ];
 
         return response()->json(['species' => $transformedData], 200);

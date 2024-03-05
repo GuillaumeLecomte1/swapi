@@ -35,7 +35,7 @@ class FilmsController extends Controller
                 'species' => $film->species->pluck('url'),
                 'starships' => $film->starships->pluck('url'),
                 'vehicles' => $film->vehicles->pluck('url'),
-                'url' => 'http://127.0.0.1:8000/api/films/' . strval($film->id),
+                'url' => env('API_URL') .'films/' . strval($film->id),
             ];
         });
 
@@ -82,7 +82,7 @@ class FilmsController extends Controller
             'species' => $film->species->pluck('url'),
             'starships' => $film->starships->pluck('url'),
             'vehicles' => $film->vehicles->pluck('url'),
-            'url' => 'http://127.0.0.1:8000/api/films/' . strval($film->id),
+            'url' => env('API_URL') .'films/' . strval($film->id),
         ];
 
         return response()->json(['film' => $transformedData], 200);

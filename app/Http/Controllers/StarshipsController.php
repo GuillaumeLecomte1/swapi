@@ -41,7 +41,7 @@ class StarshipsController extends Controller
                 'pilots' => $starship->pilots->pluck('url'),
                 'created_at' => $transport->created_at,
                 'updated_at' => $transport->updated_at,
-                'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
+                'url' =>env('API_URL') .'starships/'. strval($starship->id) ,
             ];
         });
 
@@ -96,7 +96,7 @@ class StarshipsController extends Controller
                 'pilots' => $starship->pilots->pluck('url'),
                 'created_at' => $transport->created_at,
                 'updated_at' => $transport->updated_at,
-                'url' =>'http://127.0.0.1:8000/api/starships/'. strval($starship->id) ,
+                'url' =>env('API_URL') .'starships/'. strval($starship->id) ,
         ];
         return response()->json(['starship' => $transformedData], 200);
         

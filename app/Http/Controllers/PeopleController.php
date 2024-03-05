@@ -26,7 +26,7 @@ class PeopleController extends Controller
                 'gender' => $item->gender,
                 'hair_color' => $item->hair_color,
                 'height' => $item->height,
-                'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($item->homeworld),
+                'homeworld' => env('API_URL') .'planets/'. strval($item->homeworld),
                 'mass' => $item->mass,
                 'skin_color' => $item->skin_color,
                 'created_at' => $item->created_at,
@@ -35,7 +35,7 @@ class PeopleController extends Controller
                 'species' => $item->species->pluck('url'),
                 'starships' => $item->starships->pluck('url'),
                 'vehicles' => $item->vehicles->pluck('url'),
-                'url' => 'http://127.0.0.1:8000/api/people/'. strval($item->id),
+                'url' => env('API_URL') .'people/'. strval($item->id),
             ];
         });
 
@@ -75,7 +75,7 @@ class PeopleController extends Controller
             'gender' => $people->gender,
             'hair_color' => $people->hair_color,
             'height' => $people->height,
-            'homeworld' => 'http://127.0.0.1:8000/api/planets/'. strval($people->homeworld),
+            'homeworld' => env('API_URL') .'planets/'. strval($people->homeworld),
             'mass' => $people->mass,
             'skin_color' => $people->skin_color,
             'created_at' => $people->created_at,
@@ -84,7 +84,7 @@ class PeopleController extends Controller
             'species' => $people->species->pluck('url'),
             'starships' => $people->starships->pluck('url'),
             'vehicles' => $people->vehicles->pluck('url'),
-            'url' => 'http://127.0.0.1:8000/api/people/'. strval($people->id),
+            'url' => env('API_URL') .'people/'. strval($people->id),
         ];
 
         return response()->json(['people' => $transformedData], 200);

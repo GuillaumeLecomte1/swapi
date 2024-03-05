@@ -35,7 +35,7 @@ class PlanetsController extends Controller
                 'updated_at' => $planet->updated_at,
                 'films' => $planet->films->pluck('url'),
                 'residents' => $planet->residents->pluck('url'),
-                'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
+                'url' =>env('API_URL') .'planets/'. strval($planet->id) ,
             ];
         });
 
@@ -81,7 +81,7 @@ class PlanetsController extends Controller
             'created_at' => $planet->created_at,
             'updated_at' => $planet->updated_at,
             'films' => $planet->films->pluck('url'),
-            'url' =>'http://127.0.0.1:8000/api/planets/'. strval($planet->id) ,
+            'url' =>env('API_URL') .'planets/'. strval($planet->id) ,
         ];
 
         return response()->json(['planet' => $transformedData], 200);
