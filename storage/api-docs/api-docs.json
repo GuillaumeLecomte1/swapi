@@ -118,6 +118,12 @@
                     "400": {
                         "description": "Invalid request"
                     },
+                    "201": {
+                        "description": "Création d'un film"
+                    },
+                    "300": {
+                        "description": "Invalid request"
+                    },
                     "200": {
                         "description": "Création d'un film"
                     }
@@ -1298,7 +1304,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du Vaisseau Spatial",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -1514,7 +1520,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du film",
+                        "description": "ID du Vehicule",
                         "required": true,
                         "schema": {
                             "type": "integer"
