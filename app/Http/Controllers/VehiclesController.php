@@ -154,37 +154,19 @@ class VehiclesController extends Controller
 /**
  * @OA\Put(
  *     path="/api/vehicles/{id}",
- *    @OA\Parameter(
+ * @OA\Parameter(
  *       name="id",
  *       in="path",
  *       required=true,
- *       description="ID du Vehicule",
- *        @OA\RequestBody(
- *         required=true,
- *         @OA\MediaType(
- *             mediaType="application/json",
- *             @OA\Schema(
- *                 @OA\Property(property="name", type="string", format="text", example="Speeder Bike"),
- *                 @OA\Property(property="cargo_capacity", type="integer", format="int32", example=5),
- *                 @OA\Property(property="consumables", type="string", format="text", example="1 day"),
- *                 @OA\Property(property="transport_id", type="integer", format="int32", example=1),
- *                 @OA\Property(
- *                     property="films",
- *                     type="array",
- *                     @OA\Items(type="integer", format="int32"),
- *                     example={1, 2}
- *                 ),
- *                 @OA\Property(
- *                     property="people",
- *                     type="array",
- *                     @OA\Items(type="integer", format="int32"),
- *                     example={1, 2}
- *                 ),
- *             )
- *         )
- *     ),
+ *       description="ID du film",
+ *       @OA\Schema(
+ *       type="integer"
+ *       )
+ *   ),
+ *     summary="Modifier un vehicule",
+ *     tags={"Vehicle"},
  *     @OA\Response(response=400, description="Invalid request"),
- *     @OA\Response(response="200", description="Modification d'un véhicule avec succès")
+ *     @OA\Response(response="200", description="modification d'un vehicule")
  * )
  */
     public function update(Request $request, string $id)

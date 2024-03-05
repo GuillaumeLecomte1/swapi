@@ -147,7 +147,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne le film ciblé par l'id passé en paramètre"
+                        "description": "Retourne la liste des films"
                     }
                 }
             },
@@ -168,12 +168,99 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "A New Hope"
+                                    },
+                                    "episode_id": {
+                                        "type": "integer",
+                                        "example": 4
+                                    },
+                                    "opening_crawl": {
+                                        "type": "string",
+                                        "example": "It is a period of civil war..."
+                                    },
+                                    "director": {
+                                        "type": "string",
+                                        "example": "George Lucas"
+                                    },
+                                    "producer": {
+                                        "type": "string",
+                                        "example": "Gary Kurtz, Rick McCallum"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1977-05-25"
+                                    },
+                                    "planets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "characters": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            2
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            4
+                                        ]
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Modification d'un film"
+                        "description": "Retourne la liste des films"
                     }
                 }
             },
@@ -199,7 +286,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Suppression d'un film"
+                        "description": "Retourne la liste des films"
                     }
                 }
             }
@@ -490,6 +577,98 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Test"
+                                    },
+                                    "birth_year": {
+                                        "type": "string",
+                                        "example": "19 BBY"
+                                    },
+                                    "eye_color": {
+                                        "type": "string",
+                                        "example": "Blue"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "Male"
+                                    },
+                                    "hair_color": {
+                                        "type": "string",
+                                        "example": "Blond"
+                                    },
+                                    "height": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 172
+                                    },
+                                    "homeworld": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "1"
+                                    },
+                                    "mass": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "example": 77
+                                    },
+                                    "skin_color": {
+                                        "type": "string",
+                                        "example": "Fair"
+                                    },
+                                    "films": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1,
+                                            2
+                                        ]
+                                    },
+                                    "species": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            1
+                                        ]
+                                    },
+                                    "starships": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            12
+                                        ]
+                                    },
+                                    "vehicles": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "text"
+                                        },
+                                        "example": [
+                                            14
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -670,6 +849,54 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "TEST"
+                                    },
+                                    "diameter": {
+                                        "type": "string",
+                                        "example": "12000"
+                                    },
+                                    "rotation_period": {
+                                        "type": "string",
+                                        "example": "24"
+                                    },
+                                    "orbital_period": {
+                                        "type": "string",
+                                        "example": "365"
+                                    },
+                                    "gravity": {
+                                        "type": "string",
+                                        "example": "1.5"
+                                    },
+                                    "population": {
+                                        "type": "string",
+                                        "example": "500000000"
+                                    },
+                                    "climate": {
+                                        "type": "string",
+                                        "example": "Temperate"
+                                    },
+                                    "terrain": {
+                                        "type": "string",
+                                        "example": "Forest"
+                                    },
+                                    "surface_water": {
+                                        "type": "string",
+                                        "example": "25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -866,6 +1093,58 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Wookie"
+                                    },
+                                    "average_height": {
+                                        "type": "string",
+                                        "example": "2.1"
+                                    },
+                                    "average_lifespan": {
+                                        "type": "string",
+                                        "example": "400"
+                                    },
+                                    "classification": {
+                                        "type": "string",
+                                        "example": "Mammal"
+                                    },
+                                    "designation": {
+                                        "type": "string",
+                                        "example": "Sentient"
+                                    },
+                                    "eye_colors": {
+                                        "type": "string",
+                                        "example": "blue, green, yellow, brown, golden, red"
+                                    },
+                                    "hair_colors": {
+                                        "type": "string",
+                                        "example": "black, brown"
+                                    },
+                                    "homeworld": {
+                                        "type": "string",
+                                        "example": "1"
+                                    },
+                                    "language": {
+                                        "type": "string",
+                                        "example": "Shyriiwook"
+                                    },
+                                    "skin_colors": {
+                                        "type": "string",
+                                        "example": "gray"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "400": {
                         "description": "Invalid request"
@@ -1074,7 +1353,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne la liste des véhicules"
+                        "description": "Retourne la liste des véhicules avec succès"
                     }
                 }
             },
@@ -1161,7 +1440,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Retourne le véhicule ciblé par l'id passé en paramètre"
+                        "description": "Retourne le véhicule ciblé par l'id passé en paramètre avec succès"
                     }
                 }
             },
@@ -1169,13 +1448,13 @@
                 "tags": [
                     "Vehicle"
                 ],
-                "summary": "Modifier un véhicule à l'aide de son id",
+                "summary": "Modifier un vehicule",
                 "operationId": "9d3adda0a00b56831ea9d06e550a0aa3",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID du Vehicule",
+                        "description": "ID du film",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -1187,7 +1466,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Modification d'un véhicule"
+                        "description": "modification d'un vehicule"
                     }
                 }
             },
@@ -1213,7 +1492,7 @@
                         "description": "Invalid request"
                     },
                     "200": {
-                        "description": "Suppression d'un véhicule"
+                        "description": "Suppression d'un véhicule avec succès"
                     }
                 }
             }

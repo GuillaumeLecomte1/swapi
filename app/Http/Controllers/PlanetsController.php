@@ -164,6 +164,23 @@ class PlanetsController extends Controller
  *       type="integer"
  *       )
  *   ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", example="TEST"),
+ *                 @OA\Property(property="diameter", type="string", example="12000"),
+ *                 @OA\Property(property="rotation_period", type="string", example="24"),
+ *                 @OA\Property(property="orbital_period", type="string", example="365"),
+ *                 @OA\Property(property="gravity", type="string", example="1.5"),
+ *                 @OA\Property(property="population", type="string", example="500000000"),
+ *                 @OA\Property(property="climate", type="string", example="Temperate"),
+ *                 @OA\Property(property="terrain", type="string", example="Forest"),
+ *                 @OA\Property(property="surface_water", type="string", example="25"),
+ *             )
+ *         )
+ *     ),
  *     summary="Modifie une planète",
  *     tags={"Planets"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -172,8 +189,27 @@ class PlanetsController extends Controller
  */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'string',
+            'diameter' => 'string',
+            'rotation_period' => 'string',
+            'orbital_period' => 'string',
+            'gravity' => 'string',
+            'population' => 'string',
+            'climate' => 'string',
+            'terrain' => 'string',
+            'surface_water' => 'string',
+        ]);
+
         $planet = Planets::find($id);
+    
+        if (!$planet) {
+            return response()->json(['message' => 'Planet non trouvé'], 404);
+        }
+    
         $planet->update($request->all());
+    
+        return response()->json(['message' => 'Planet mis à jour', 'data' => $planet]);
     }
 
 /**

@@ -184,6 +184,24 @@ class SpeciesController extends Controller
  *       type="integer"
  *       )
  *   ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", example="Wookie"),
+ *                 @OA\Property(property="average_height", type="string", example="2.1"),
+ *                 @OA\Property(property="average_lifespan", type="string", example="400"),
+ *                 @OA\Property(property="classification", type="string", example="Mammal"),
+ *                 @OA\Property(property="designation", type="string", example="Sentient"),
+ *                 @OA\Property(property="eye_colors", type="string", example="blue, green, yellow, brown, golden, red"),
+ *                 @OA\Property(property="hair_colors", type="string", example="black, brown"),
+ *                 @OA\Property(property="homeworld", type="string", example="1"),
+ *                 @OA\Property(property="language", type="string", example="Shyriiwook"),
+ *                 @OA\Property(property="skin_colors", type="string", example="gray"),
+ *             )
+ *         )
+ *     ),
  *     summary="Modifie une espèce",
  *     tags={"Species"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -192,8 +210,28 @@ class SpeciesController extends Controller
  */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'average_height' => 'required|string',
+            'average_lifespan' => 'required|string',
+            'classification' => 'required|string',
+            'designation' => 'required|string',
+            'eye_colors' => 'required|string',
+            'hair_colors' => 'required|string',
+            'homeworld' => 'required|string',
+            'language' => 'required|string',
+            'skin_colors' => 'required|string',
+        ]);
+    
         $species = Species::find($id);
+    
+        if (!$species) {
+            return response()->json(['message' => 'Species non trouvé'], 404);
+        }
+    
         $species->update($request->all());
+    
+        return response()->json(['message' => 'Species mis a jour', 'data' => $species]);
     }
 
 /**

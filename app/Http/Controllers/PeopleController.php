@@ -181,7 +181,8 @@ class PeopleController extends Controller
             $people->vehicles()->attach($request->input('vehicles'));
         }
 
-        return response()->json(['message' => 'Personne créée avec succès', 'people' => $people], 201);    }
+        return response()->json(['message' => 'Personne créée avec succès', 'people' => $people], 201);    
+    }
 
 /**
  * @OA\Put(
@@ -195,6 +196,47 @@ class PeopleController extends Controller
  *       type="integer"
  *       )
  *   ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(property="name", type="string", example="Test"),
+ *                 @OA\Property(property="birth_year", type="string", example="19 BBY"),
+ *                 @OA\Property(property="eye_color", type="string", example="Blue"),
+ *                 @OA\Property(property="gender", type="string", example="Male"),
+ *                 @OA\Property(property="hair_color", type="string", example="Blond"),
+ *                 @OA\Property(property="height", type="integer", format="int32", example=172),
+ *                 @OA\Property(property="homeworld", type="string", format="text", example="1"),
+ *                 @OA\Property(property="mass", type="integer", format="int32", example=77),
+ *                 @OA\Property(property="skin_color", type="string", example="Fair"),
+ *                 @OA\Property(
+ *                     property="films",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="text"),
+ *                     example={1, 2}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="species",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="text"),
+ *                     example={1}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="starships",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="text"),
+ *                     example={12}
+ *                 ),
+ *                 @OA\Property(
+ *                     property="vehicles",
+ *                     type="array",
+ *                     @OA\Items(type="string", format="text"),
+ *                     example={14}
+ *                 ),
+ *             )
+ *         )
+ *     ),
  *     summary="Modifier un personnage",
  *     tags={"People"},
  *     @OA\Response(response=400, description="Invalid request"),
@@ -203,8 +245,60 @@ class PeopleController extends Controller
  */
     public function update(Request $request, string $id)
     {
-        $people = People::find($id);
-        $people->update($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'birth_year' => 'required|string',
+            'eye_color' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'hair_color' => 'required|string|max:255',
+            'height' => 'required|integer',
+            'homeworld' => 'required|string',
+            'mass' => 'required|integer',
+            'skin_color' => 'required|string|max:255',
+            'films' => 'array',     
+            'species' => 'array',   
+            'starships' => 'array', 
+            'vehicles' => 'array',  
+        ]);
+    
+        $people = People::findOrFail($id);
+
+        if (!$people) {
+            return response()->json(['message' => 'Personne non trouvé'], 404);
+        }
+
+        $people->update([
+            'name' => $request->input('name'),
+            'birth_year' => $request->input('birth_year'),
+            'eye_color' => $request->input('eye_color'),
+            'gender' => $request->input('gender'),
+            'hair_color' => $request->input('hair_color'),
+            'height' => $request->input('height'),
+            'homeworld' => $request->input('homeworld'),
+            'mass' => $request->input('mass'),
+            'skin_color' => $request->input('skin_color'),
+        ]);
+    
+        if ($request->has('films')) {
+            $people->films()->sync($request->input('films'));
+        }
+    
+        if ($request->has('species')) {
+            $people->species()->sync($request->input('species'));
+        }
+    
+        if ($request->has('starships')) {
+            $people->starships()->sync($request->input('starships'));
+        }
+    
+        if ($request->has('vehicles')) {
+            $people->vehicles()->sync($request->input('vehicles'));
+        }
+    
+        return response()->json([
+            'message' => 'People mis à jour',
+            'people' => $people,
+        ], 200);
     }
 
 /**
